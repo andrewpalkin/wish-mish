@@ -7,7 +7,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <p>
-            Edit <code>src/App.js</code> and save to. My changes
+              Edit <code>src/App.js</code> and save to. Vova changes
           </p>
         </header>
       </div>
