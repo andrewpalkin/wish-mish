@@ -7,7 +7,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <p>
-            Edit <code>src/App.js</code> and save to.
+            Edit <code>src/App.js</code> and save to. My changes
           </p>
         </header>
       </div>
