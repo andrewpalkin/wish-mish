@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
-import "../semantic/semantic.min.css";
 
 class App extends Component {
   render() {
