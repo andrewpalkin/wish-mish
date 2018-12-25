@@ -65,7 +65,7 @@ export default class StickyNavBar extends Component {
           fixed={menuFixed ? "top" : undefined}
           style={menuFixed ? fixedMenuStyle : menuStyle}
         >
-          <Container text>
+          <Container>
             <Menu.Item>
               <Icon loading name="certificate" />
             </Menu.Item>
