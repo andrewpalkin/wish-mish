@@ -64,8 +64,9 @@ export default class StickyNavBar extends Component {
           borderless
           fixed={menuFixed ? "top" : undefined}
           style={menuFixed ? fixedMenuStyle : menuStyle}
+          inverted={menuFixed ? false : true}
         >
-          <Container text>
+          <Container>
             <Menu.Item>
               <Icon loading name="certificate" />
             </Menu.Item>
@@ -76,7 +77,12 @@ export default class StickyNavBar extends Component {
             <Menu.Item as="a">Articles</Menu.Item>
 
             <Menu.Menu position="right">
-              <Button basic compact color="pink">
+              <Button
+                basic={menuFixed ? true : false}
+                compact
+                color={menuFixed ? "pink" : "pink"}
+                style={{ margin: "15px" }}
+              >
                 Add Wish
               </Button>
               <Dropdown text="Dropdown" pointing className="link item">
