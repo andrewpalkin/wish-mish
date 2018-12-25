@@ -34,6 +34,14 @@ class App extends Component {
           {Paragraph()}
           {Paragraph()}
           {Paragraph()}
+          {Paragraph()}
+          {Paragraph()}
+          {Paragraph()}
+          {Paragraph()}
+          {Paragraph()}
+          {Paragraph()}
+          {Paragraph()}
+          {Paragraph()}
         </div>
       </BrowserRouter>
     );
