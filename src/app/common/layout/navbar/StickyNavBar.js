@@ -6,7 +6,9 @@ import {
   Image,
   Menu,
   Visibility,
-  Button
+  Button,
+  Icon,
+  Header
 } from "semantic-ui-react";
 
 const fixedMenuStyle = {
@@ -63,18 +65,18 @@ export default class StickyNavBar extends Component {
           fixed={menuFixed ? "top" : undefined}
           style={menuFixed ? fixedMenuStyle : menuStyle}
         >
-          <Container text>
+          <Container>
             <Menu.Item>
-              <Image size="mini" src="/logo.png" />
+              <Icon loading name="certificate" />
             </Menu.Item>
-            <Menu.Item header color="pink">
-              WISH MISH
+            <Menu.Item>
+              <Header color="pink">WISH MISH</Header>
             </Menu.Item>
             <Menu.Item as="a">Blog</Menu.Item>
             <Menu.Item as="a">Articles</Menu.Item>
 
             <Menu.Menu position="right">
-              <Button basic color="pink">
+              <Button basic compact color="pink">
                 Add Wish
               </Button>
               <Dropdown text="Dropdown" pointing className="link item">
