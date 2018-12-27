@@ -12,10 +12,10 @@ import {
 } from "semantic-ui-react";
 
 const fixedMenuStyle = {
-  backgroundColor: "#fff",
   border: "1px solid #ddd",
   boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
-  padding: "5px"
+  padding: "5px",
+  opacity: 0.9
 };
 
 const menuStyle = {
@@ -23,7 +23,7 @@ const menuStyle = {
   borderRadius: 0,
   boxShadow: "none",
   marginBottom: "1em",
-  marginTop: "4em",
+  marginTop: "0em",
   transition: "box-shadow 0.5s ease, padding 0.5s ease"
 };
 
@@ -64,24 +64,26 @@ export default class StickyNavBar extends Component {
           borderless
           fixed={menuFixed ? "top" : undefined}
           style={menuFixed ? fixedMenuStyle : menuStyle}
-          inverted={menuFixed ? false : true}
+          inverted
         >
           <Container>
             <Menu.Item>
               <Icon loading name="certificate" />
             </Menu.Item>
             <Menu.Item>
-              <Header color="pink">WISH MISH</Header>
+              <Header inverted>WISH MISH</Header>
             </Menu.Item>
             <Menu.Item as="a">Blog</Menu.Item>
             <Menu.Item as="a">Articles</Menu.Item>
 
             <Menu.Menu position="right">
               <Button
-                basic={menuFixed ? true : false}
                 compact
-                color={menuFixed ? "pink" : "pink"}
-                style={{ margin: "15px" }}
+                style={{
+                  margin: "15px",
+                  backgroundColor: "#F89235",
+                  color: "white"
+                }}
               >
                 Add Wish
               </Button>

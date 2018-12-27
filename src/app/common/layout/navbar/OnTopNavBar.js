@@ -1,15 +1,31 @@
 import React from "react";
-import { Container, Header } from "semantic-ui-react";
+import { Container, Header, Button, Grid } from "semantic-ui-react";
 
 const OnTopNavBar = () => {
   return (
-    <Container text style={{ marginTop: "2em" }}>
-      <Header as="h1">Sticky Example</Header>
-      <p>
-        This example shows how to use lazy loaded images, a sticky menu, and a
-        simple text container
-      </p>
-    </Container>
+    <div
+      text
+      style={{
+        background:
+          "linear-gradient(to top, #000000, #1b1a1a, #302d2c, #44423f, #575954)",
+        minHeight: "160px",
+        opacity: 0.9,
+        marginBottom: "14px"
+      }}
+    >
+      <Button />
+      <Grid centered>
+        <Container text style={{ paddingTop: "2em", paddingBottom: "2em" }}>
+          <Header inverted as="h1">
+            Sticky Example
+          </Header>
+
+          <Header inverted as="h1">
+            Sticky Example
+          </Header>
+        </Container>
+      </Grid>
+    </div>
   );
 };
 
