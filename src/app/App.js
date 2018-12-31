@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Button, Image } from "semantic-ui-react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import StickyNavBar from "./common/layout/navbar/StickyNavBar";
 import OnTopNavBar from "./common/layout/navbar/OnTopNavBar";
 import Footer from "./common/layout/footer/Footer";
-import { Container, Segment } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
+import HomePage from "./home-page/home";
+import SubmitWishMainContainer from "./submit-wish-page/SubmitWishMainContainer";
 
 class App extends Component {
   render() {
@@ -13,22 +15,15 @@ class App extends Component {
         <div>
           <OnTopNavBar />
           <StickyNavBar />
-          <Container text style={{ marginTop: "100px" }}>
-            <Segment>
-              <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-            </Segment>
-            <Segment>
-              <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-            </Segment>
-            <Segment>
-              <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-            </Segment>
-            <Segment>
-              <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-            </Segment>
-            <Segment>
-              <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-            </Segment>
+          <Container style={{ marginTop: "100px" }}>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route
+                exact
+                path="/submit-wish"
+                component={SubmitWishMainContainer}
+              />
+            </Switch>
           </Container>
           <Footer />
         </div>

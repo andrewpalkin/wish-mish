@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Container,
   Dropdown,
@@ -14,8 +15,8 @@ import {
 const fixedMenuStyle = {
   border: "1px solid #ddd",
   boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
-  padding: "5px",
-  opacity: 0.9
+  padding: "5px"
+
 };
 
 const menuStyle = {
@@ -61,6 +62,8 @@ export default class StickyNavBar extends Component {
         once={false}
       >
         <Menu
+          
+          pointing
           borderless
           fixed={menuFixed ? "top" : undefined}
           style={menuFixed ? fixedMenuStyle : menuStyle}
@@ -71,10 +74,16 @@ export default class StickyNavBar extends Component {
               <Icon loading name="certificate" />
             </Menu.Item>
             <Menu.Item>
-              <Header inverted>WISH MISH</Header>
+              <Header inverted as={NavLink} to="/">
+                WISH MISH
+              </Header>
             </Menu.Item>
-            <Menu.Item as="a">Blog</Menu.Item>
-            <Menu.Item as="a">Articles</Menu.Item>
+            <Menu.Item as={NavLink} name="home" exact to="/">
+              Home
+            </Menu.Item>
+            <Menu.Item as={NavLink} to="/about">
+              About
+            </Menu.Item>
 
             <Menu.Menu position="right">
               <Button
@@ -84,6 +93,8 @@ export default class StickyNavBar extends Component {
                   backgroundColor: "#F89235",
                   color: "white"
                 }}
+                as={NavLink}
+                to="/submit-wish"
               >
                 Add Wish
               </Button>
