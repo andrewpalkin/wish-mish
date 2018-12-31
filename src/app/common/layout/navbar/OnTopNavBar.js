@@ -1,10 +1,9 @@
 import React from "react";
-import { Container, Header, Button, Grid } from "semantic-ui-react";
+import { Container, Header, Button, Grid, Icon } from "semantic-ui-react";
 
 const OnTopNavBar = () => {
   return (
     <div
-      text
       style={{
         background:
           "linear-gradient(to top, #000000, #1b1a1a, #302d2c, #44423f, #575954)",
@@ -13,7 +12,11 @@ const OnTopNavBar = () => {
         marginBottom: "14px"
       }}
     >
-      <Button />
+      <Grid>
+        <Grid.Column style={{ marginTop: "6px", marginLeft: "6px" }}>
+          <Icon inverted name="close" floated="right" width={1} />
+        </Grid.Column>
+      </Grid>
       <Grid centered>
         <Container text style={{ paddingTop: "2em", paddingBottom: "2em" }}>
           <Header inverted as="h1">
