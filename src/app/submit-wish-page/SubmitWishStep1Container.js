@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { submit } from "redux-form";
 import SubmitWishStep1Component from "./SubmitWishStep1Component";
 
 const mapStateToProps = state => {
@@ -11,10 +12,10 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  // 'fetchSubredditJson()' will trigger fetching of JSON data from
-  // the Reddit API and pushes the relevant data into the Redux store.
-
-  return {};
+  return {
+    handleSubmitWishDetailsFormStep1: () =>
+      dispatch(submit("wish-details-step1"))
+  };
 };
 
 const SubmitWishStep1Coontainer = connect(

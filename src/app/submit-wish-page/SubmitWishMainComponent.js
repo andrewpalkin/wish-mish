@@ -54,23 +54,11 @@ export default class SubmitWishPage extends Component {
     const showStep1 = this.state.showStep1;
     const showStep2 = this.state.showStep2;
     const showStep3 = this.state.showStep3;
-    console.log("submitSucceeded: ", submitSucceeded);
-    // let values = this.props.values;
-    // console.log("values: ", values);
-    // console.log("currentStep before: ", currentStep);
-    // if (submitSucceeded) {
-    //   currentStep++;
-    //   console.log("submitSucceeded: ", submitSucceeded);
-    // }
-    // console.log("currentStep after: ", currentStep);
+
     return (
       <>
         <Step.Group widths={6}>
-          <Step
-            active={showStep1}
-            disabled={!showStep1}
-            completed={currentStep > 1}
-          >
+          <Step active={showStep1} completed={currentStep > 1} link>
             <Icon name="edit" />
             <Step.Content>
               <Step.Title>Product Details</Step.Title>
@@ -78,8 +66,9 @@ export default class SubmitWishPage extends Component {
           </Step>
           <Step
             active={showStep2}
-            disabled={!showStep2}
+            disabled={currentStep < 3}
             completed={currentStep > 2}
+            link
           >
             <Icon name="shipping fast" />
             <Step.Content>
@@ -90,6 +79,7 @@ export default class SubmitWishPage extends Component {
             active={showStep3}
             disabled={!showStep3}
             completed={currentStep > 3}
+            link
           >
             <Icon name="thumbs up" />
             <Step.Content>
