@@ -73,7 +73,7 @@ export default class SubmitWishPage extends Component {
           >
             <Icon name="edit" />
             <Step.Content>
-              <Step.Title>Wish Details</Step.Title>
+              <Step.Title>Product Details</Step.Title>
             </Step.Content>
           </Step>
           <Step
@@ -93,7 +93,7 @@ export default class SubmitWishPage extends Component {
           >
             <Icon name="thumbs up" />
             <Step.Content>
-              <Step.Title>Confirm Wish</Step.Title>
+              <Step.Title>Confirm</Step.Title>
             </Step.Content>
           </Step>
         </Step.Group>
