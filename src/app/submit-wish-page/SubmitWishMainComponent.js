@@ -13,9 +13,9 @@ import {
   Step
 } from "semantic-ui-react";
 
-import SubmitWishStep1Component from "./SubmitWishStep1Component";
-import SubmitWishStep2Component from "./SubmitWishStep2Component";
-import SubmitWishStep3Component from "./SubmitWishStep3Component";
+import SubmitWishStep1Container from "./SubmitWishStep1Container";
+import SubmitWishStep2Container from "./SubmitWishStep2Container";
+import SubmitWishStep3Container from "./SubmitWishStep3Container";
 
 export default class SubmitWishPage extends Component {
   state = {
@@ -98,16 +98,16 @@ export default class SubmitWishPage extends Component {
           </Step>
         </Step.Group>
         {showStep1 ? (
-          <SubmitWishStep1Component
+          <SubmitWishStep1Container
             onSubmit={this.handleWishDetailsFormSubmit}
           />
         ) : null}
         {showStep2 ? (
-          <SubmitWishStep2Component
+          <SubmitWishStep2Container
             onSubmit={this.handleWishDeliveryDetailsFormSubmit}
           />
         ) : null}
-        {showStep3 ? <SubmitWishStep3Component /> : null}
+        {showStep3 ? <SubmitWishStep3Container /> : null}
       </>
     );
   }
