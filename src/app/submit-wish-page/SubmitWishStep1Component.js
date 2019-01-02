@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Field, reduxForm } from "redux-form";
-import { Form, Message } from "semantic-ui-react";
+import { Form, Message, Label } from "semantic-ui-react";
 
 const required = value => (value ? undefined : "Required");
 
@@ -45,6 +45,20 @@ const renderTextArea = field => (
       }
       error={field.meta.touched && field.meta.error ? "error" : false}
     />
+    {field.meta.touched && field.meta.error ? (
+      <Label
+        basic
+        color="red"
+        pointing
+        prompt
+        label
+        transition
+        visible
+        style={{ marginTop: "0px", marginBottom: "10px" }}
+      >
+        {field.meta.error}
+      </Label>
+    ) : null}
   </>
 );
 
