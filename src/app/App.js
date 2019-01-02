@@ -15,7 +15,7 @@ class App extends Component {
         <div>
           <OnTopNavBar />
           <StickyNavBar />
-          <Container style={{ marginTop: "100px" }}>
+          <Container style={{ marginTop: "60px" }}>
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route
