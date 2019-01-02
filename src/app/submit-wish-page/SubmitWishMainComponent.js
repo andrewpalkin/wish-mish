@@ -15,17 +15,32 @@ import {
 
 import SubmitWishStep1Component from "./SubmitWishStep1Component";
 import SubmitWishStep2Component from "./SubmitWishStep2Component";
+import SubmitWishStep3Component from "./SubmitWishStep3Component";
 
 export default class SubmitWishPage extends Component {
   state = {
-    step: 1,
-    submitSucceeded: false
+    showStep1: true,
+    showStep2: false,
+    showStep3: false,
+    currentStep: 1
   };
 
-  handleSubmit = e => {
-    if (this.state.submitSucceeded) {
-      this.setState({ submitSucceeded: true });
-    }
+  handleWishDetailsFormSubmit = e => {
+    this.setState({
+      showStep2: true,
+      showStep1: false,
+      showStep3: false,
+      currentStep: 2
+    });
+  };
+
+  handleWishDeliveryDetailsFormSubmit = e => {
+    this.setState({
+      showStep1: false,
+      showStep2: false,
+      showStep3: true,
+      currentStep: 3
+    });
   };
 
   updateStep = step => {
@@ -34,8 +49,11 @@ export default class SubmitWishPage extends Component {
     });
   };
   render() {
-    let currentStep = this.state.step;
+    let currentStep = this.state.currentStep;
     const submitSucceeded = this.state.submitSucceeded;
+    const showStep1 = this.state.showStep1;
+    const showStep2 = this.state.showStep2;
+    const showStep3 = this.state.showStep3;
     console.log("submitSucceeded: ", submitSucceeded);
     // let values = this.props.values;
     // console.log("values: ", values);
@@ -48,33 +66,48 @@ export default class SubmitWishPage extends Component {
     return (
       <>
         <Step.Group widths={6}>
-          <Step active={currentStep === 1} disabled={currentStep !== 1}>
-            <Icon name="info" />
+          <Step
+            active={showStep1}
+            disabled={!showStep1}
+            completed={currentStep > 1}
+          >
+            <Icon name="edit" />
             <Step.Content>
-              <Step.Title>Wish Description</Step.Title>
+              <Step.Title>Wish Details</Step.Title>
             </Step.Content>
           </Step>
-          <Step disabled>
-            <Icon name="credit card" />
+          <Step
+            active={showStep2}
+            disabled={!showStep2}
+            completed={currentStep > 2}
+          >
+            <Icon name="shipping fast" />
             <Step.Content>
-              <Step.Title>Billing</Step.Title>
+              <Step.Title>Delivery Details</Step.Title>
             </Step.Content>
           </Step>
-          <Step disabled>
-            <Icon name="feed" />
+          <Step
+            active={showStep3}
+            disabled={!showStep3}
+            completed={currentStep > 3}
+          >
+            <Icon name="thumbs up" />
             <Step.Content>
-              <Step.Title>Confirm Order</Step.Title>
+              <Step.Title>Confirm Wish</Step.Title>
             </Step.Content>
           </Step>
         </Step.Group>
-        {!submitSucceeded ? (
+        {showStep1 ? (
           <SubmitWishStep1Component
-            onSubmit={e => {
-              console.log(e, "pashol nahui");
-            }}
+            onSubmit={this.handleWishDetailsFormSubmit}
           />
         ) : null}
-        {submitSucceeded ? <SubmitWishStep2Component /> : null}
+        {showStep2 ? (
+          <SubmitWishStep2Component
+            onSubmit={this.handleWishDeliveryDetailsFormSubmit}
+          />
+        ) : null}
+        {showStep3 ? <SubmitWishStep3Component /> : null}
       </>
     );
   }

@@ -149,7 +149,7 @@ const SubmitWishStep1Component = props => {
           name="isAgreed"
         />
         <Form.Group inline>
-          <Form.Button primary>Submit</Form.Button>
+          <Form.Button primary>Next</Form.Button>
           <Form.Button onClick={reset}>Reset</Form.Button>
         </Form.Group>
       </Form>
@@ -157,5 +157,5 @@ const SubmitWishStep1Component = props => {
   );
 };
 export default reduxForm({
-  form: "profile"
+  form: "wish-details-step1"
 })(SubmitWishStep1Component);
