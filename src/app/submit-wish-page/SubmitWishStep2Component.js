@@ -63,11 +63,14 @@ const renderTextArea = field => (
     >
       <Label
         basic
-        color="red"
         pointing
-        label
         visible
-        style={{ marginTop: "0px", marginBottom: "10px" }}
+        style={{
+          marginTop: "0px",
+          marginBottom: "10px",
+          color: "#9f3a38",
+          borderColor: "#e0b4b4"
+        }}
       >
         {field.meta.error}
       </Label>

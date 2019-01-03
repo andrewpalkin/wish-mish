@@ -63,11 +63,14 @@ const renderTextArea = field => (
     >
       <Label
         basic
-        color="red"
         pointing
-        label
         visible
-        style={{ marginTop: "0px", marginBottom: "10px" }}
+        style={{
+          marginTop: "0px",
+          marginBottom: "10px",
+          color: "#9f3a38",
+          borderColor: "#e0b4b4"
+        }}
       >
         {field.meta.error}
       </Label>
@@ -80,7 +83,7 @@ const SubmitWishStep1Component = props => {
 
   return (
     <Grid stackable>
-      <Grid.Column width={12}>
+      <Grid.Column width={11}>
         <Segment style={{ minHeight: "680px" }}>
           <Message info>
             <p>
@@ -164,7 +167,7 @@ const SubmitWishStep1Component = props => {
           </Form>
         </Segment>
       </Grid.Column>
-      <Grid.Column width={4}>
+      <Grid.Column width={5}>
         <Segment>
           <Header as="h2" floated="center">
             Summary
