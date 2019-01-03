@@ -17,7 +17,7 @@ import SubmitWishStep1Container from "./SubmitWishStep1Container";
 import SubmitWishStep2Container from "./SubmitWishStep2Container";
 import SubmitWishStep3Container from "./SubmitWishStep3Container";
 
-export default class SubmitWishPage extends Component {
+export default class SubmitWishMainComponent extends Component {
   state = {
     showStep1: true,
     showStep2: false,
@@ -54,6 +54,7 @@ export default class SubmitWishPage extends Component {
     const showStep1 = this.state.showStep1;
     const showStep2 = this.state.showStep2;
     const showStep3 = this.state.showStep3;
+    const formDataStep1 = this.props.formDataStep1;
 
     return (
       <>
@@ -90,6 +91,7 @@ export default class SubmitWishPage extends Component {
         {showStep1 ? (
           <SubmitWishStep1Container
             onSubmit={this.handleWishDetailsFormSubmit}
+            formData={formDataStep1}
           />
         ) : null}
         {showStep2 ? (
