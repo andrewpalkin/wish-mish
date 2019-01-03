@@ -14,6 +14,13 @@ import {
 
 const required = value => (value ? undefined : "Required");
 
+const pStyle = {
+  after: {
+    content: "*",
+    color: "red"
+  }
+};
+
 const renderCheckbox = field => (
   <Form.Checkbox
     checked={!!field.input.value}
@@ -53,7 +60,7 @@ const renderTextArea = field => (
           ? "Please fill mandatory field"
           : field.placeholder
       }
-      error={field.meta.touched && field.meta.error ? "error" : false}
+      error={field.meta.touched && field.meta.error ? true : false}
     />
 
     <Transition
@@ -76,86 +83,81 @@ const renderTextArea = field => (
 );
 
 const SubmitWishStep1Component = props => {
-  const { handleSubmit, reset } = props;
+  const { handleSubmit, reset, myValues } = props;
+  console.log(myValues);
 
   return (
     <Grid stackable>
-      <Grid.Column width={12}>
+      <Grid.Column width={11}>
         <Segment style={{ minHeight: "680px" }}>
-          <Message info>
-            <p>
-              You will don't need any special mappings for{" "}
-              <code>Form.Input</code>, because it passed events from native
-              inputs.
-            </p>
-            <p>
-              The situation with other components is more complicated, because
-              the <code>Field</code> relies on the native events. However, it
-              can be easily with{" "}
-              <a
-                href="https://redux-form.com/7.4.2/docs/api/field.md/#2-a-stateless-function"
-                target="_blank"
-              >
-                stateless function
-              </a>
-              . We recomend to wrap them with generic components to reduce forms
-              complexivity.
-            </p>
-          </Message>
+          <Header as="h1" dividing>
+            Item Details
+          </Header>
+          <Divider hidden />
+          <Divider hidden />
           <Form onSubmit={handleSubmit}>
-            <Form.Group widths="equal">
-              <Field
-                component={Form.Input}
-                label="First name"
-                name="firstName"
-                placeholder="First name"
-                validate={required}
-              />
-              <Field
-                component={Form.Input}
-                label="Last name"
-                name="lastName"
-                placeholder="Last name"
-              />
-              <Field
-                component={renderSelect}
-                label="Gender"
-                name="gender"
-                options={[
-                  { key: "m", text: "Male", value: "male" },
-                  { key: "f", text: "Female", value: "female" }
-                ]}
-                placeholder="Gender"
-              />
-            </Form.Group>
-            <Form.Group inline>
-              <label>Quantity</label>
-              <Field
-                component={renderRadio}
-                label="One"
-                name="quantity"
-                radioValue={1}
-              />
-              <Field
-                component={renderRadio}
-                label="Two"
-                name="quantity"
-                radioValue={2}
-              />
-              <Field
-                component={renderRadio}
-                label="Three"
-                name="quantity"
-                radioValue={3}
-              />
-            </Form.Group>
+            <Field
+              component={Form.Input}
+              label="Product Name"
+              name="productName"
+              placeholder="Product name that you wish..."
+              validate={required}
+              required
+            />
             <Field
               component={renderTextArea}
-              label="About"
-              name="about"
-              placeholder="Tell us more about you..."
+              label="Product Information"
+              name="productInformation"
+              placeholder="Tell us more about you product that you wish.."
               validate={required}
             />
+            <Field
+              component={Form.Input}
+              label="Product URL"
+              name="productURL"
+              placeholder="Product URL from online shops like Amazon, eBay etc..."
+              validate={required}
+            />
+            <div
+              style={{
+                marginBottom: "4px"
+              }}
+            >
+              <label
+                style={{
+                  fontWeight: 600,
+                  marginBottom: "2px"
+                }}
+              >
+                Item Parameters
+              </label>
+              <label
+                style={{
+                  color: "red",
+                  margin: "0 0px 0px 3px"
+                }}
+              >
+                *
+              </label>
+            </div>
+            <Form.Group widths="equal">
+              <Field
+                component={renderSelect}
+                name="itemSize"
+                options={[
+                  { key: "s", text: "Small", value: "small" },
+                  { key: "m", text: "Medium", value: "medium" },
+                  { key: "b", text: "Big", value: "big" }
+                ]}
+                placeholder="Small (Medium, Big)"
+              />
+              <Field
+                component={Form.Input}
+                name="itemWeight"
+                placeholder="Weight (kg)"
+                validate={required}
+              />
+            </Form.Group>
             <Field
               component={renderCheckbox}
               label="I agree to the Terms and Conditions"
@@ -164,12 +166,11 @@ const SubmitWishStep1Component = props => {
           </Form>
         </Segment>
       </Grid.Column>
-      <Grid.Column width={4}>
+      <Grid.Column width={5}>
         <Segment>
-          <Header as="h2" floated="center">
-            Summary
-          </Header>
-
+          <label as="h3">
+            {props.formData ? props.formData.productName : ""}
+          </label>
           <Divider clearing />
           <Button
             primary
@@ -184,5 +185,5 @@ const SubmitWishStep1Component = props => {
   );
 };
 export default reduxForm({
-  form: "wish-details-step1"
+  form: "wishDetailsStep1Form"
 })(SubmitWishStep1Component);

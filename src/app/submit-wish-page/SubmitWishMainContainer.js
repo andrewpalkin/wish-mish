@@ -2,10 +2,11 @@ import { connect } from "react-redux";
 import SubmitWishMainComponent from "./SubmitWishMainComponent";
 
 const mapStateToProps = state => {
-  return state.form.profile
+  return state.form.wishDetailsStep1Form
     ? {
-        submitSucceeded: state.form.profile.submitSucceeded,
-        values: state.form.profile.values
+        formDataStep1: state.form.wishDetailsStep1Form.values,
+        formDataStep2: state.form.wishDetailsStep1Form.values,
+        formDataStep3: state.form.wishDetailsStep1Form.values
       }
     : {};
 };
