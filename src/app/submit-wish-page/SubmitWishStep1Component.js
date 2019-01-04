@@ -12,6 +12,7 @@ import {
   Divider,
   Icon
 } from "semantic-ui-react";
+import ItemQuantityComponent from "../common/form-component/ItemQuantityComponent";
 
 const required = value => (value ? undefined : "Required");
 
@@ -30,6 +31,44 @@ const renderCheckbox = field => (
     label={field.label}
     onChange={(e, { checked }) => field.input.onChange(checked)}
   />
+);
+
+const renderItemQuantityComponent = field => (
+  <Grid>
+    <Grid.Column width={8}>
+      <label
+        style={{
+          display: "inline-block",
+          margin: "0 0 .28571429rem 0",
+          color: "rgba(0,0,0,.87)",
+          fontSize: ".92857143em",
+          fontWeight: "700",
+          textTransform: "none"
+        }}
+      >
+        Quantity
+      </label>
+    </Grid.Column>
+    <Grid.Column width={8} align="right">
+      <Icon
+        disabled
+        circular
+        color="blue"
+        name="minus"
+        style={{ marginRight: "6px" }}
+        onClick={() => field.input.onChange(field.input.value - 1)}
+      />
+      <label as="h2">{field.input.value ? field.input.value : 1}</label>
+      <Icon
+        link
+        circular
+        color="blue"
+        name="plus"
+        style={{ marginLeft: "6px" }}
+        onClick={() => field.input.onChange(field.input.value + 1)}
+      />
+    </Grid.Column>
+  </Grid>
 );
 
 const renderRadio = field => (
@@ -95,7 +134,7 @@ const SubmitWishStep1Component = props => {
   return (
     <Grid stackable>
       <Grid.Column width={11}>
-        <Segment style={{ minHeight: "680px" }}>
+        <Segment style={{ minHeight: "600px" }}>
           <Header as="h1" dividing>
             Item Details
           </Header>
@@ -182,11 +221,11 @@ const SubmitWishStep1Component = props => {
               />
             </Form.Group>
             <Divider hidden />
-            <Divider hidden />
+
             <Field
               component={Form.Input}
               label="Item Price"
-              name="productName"
+              name="itemPrice"
               icon="dollar"
               iconPosition="left"
               placeholder="Enter the item price"
@@ -194,28 +233,12 @@ const SubmitWishStep1Component = props => {
               required
             />
             <Divider hidden />
-            <Divider hidden />
-            <Grid>
-              <Grid.Column width={8}>
-                <label
-                  style={{
-                    display: "inline-block",
-                    margin: "0 0 .28571429rem 0",
-                    color: "rgba(0,0,0,.87)",
-                    fontSize: ".92857143em",
-                    fontWeight: "700",
-                    textTransform: "none"
-                  }}
-                >
-                  Quantity
-                </label>
-              </Grid.Column>
-              <Grid.Column width={8} align="right">
-                <Icon disabled circular color="blue" name="minus" />
-                <Label as="h2">1</Label>
-                <Icon link circular color="blue" name="plus" />
-              </Grid.Column>
-            </Grid>
+            <Field
+              component={ItemQuantityComponent}
+              name="quantity"
+              value={1}
+              required
+            />
           </Form>
         </Segment>
       </Grid.Column>
@@ -225,6 +248,16 @@ const SubmitWishStep1Component = props => {
             {props.formData ? props.formData.productName : ""}
           </label>
           <Divider clearing />
+          {props.formData && props.formData.itemPrice ? (
+            <Grid style={{ marginBottom: "4px" }} columns="equal">
+              <Grid.Column floated="left">
+                <Header size="medium">Item Price</Header>
+              </Grid.Column>
+              <Grid.Column floated="right" textAlign="right">
+                <Header size="large">${props.formData.itemPrice}.00</Header>
+              </Grid.Column>
+            </Grid>
+          ) : null}
           <Button
             primary
             fluid
