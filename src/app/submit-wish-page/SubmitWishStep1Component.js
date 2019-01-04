@@ -9,7 +9,8 @@ import {
   Grid,
   Button,
   Header,
-  Divider
+  Divider,
+  Icon
 } from "semantic-ui-react";
 
 const required = value => (value ? undefined : "Required");
@@ -23,6 +24,7 @@ const pStyle = {
 
 const renderCheckbox = field => (
   <Form.Checkbox
+    toggle
     checked={!!field.input.value}
     name={field.input.name}
     label={field.label}
@@ -47,6 +49,7 @@ const renderSelect = field => (
     options={field.options}
     placeholder={field.placeholder}
     value={field.input.value}
+    required={field.required}
   />
 );
 
@@ -60,6 +63,7 @@ const renderTextArea = field => (
           ? "Please fill mandatory field"
           : field.placeholder
       }
+      required={field.required}
       error={field.meta.touched && field.meta.error ? true : false}
     />
 
@@ -71,7 +75,6 @@ const renderTextArea = field => (
       <Label
         basic
         pointing
-        visible
         style={{
           marginTop: "0px",
           marginBottom: "10px",
@@ -96,8 +99,6 @@ const SubmitWishStep1Component = props => {
           <Header as="h1" dividing>
             Item Details
           </Header>
-          <Divider hidden />
-          <Divider hidden />
           <Form onSubmit={handleSubmit}>
             <Field
               component={Form.Input}
@@ -113,6 +114,7 @@ const SubmitWishStep1Component = props => {
               name="productInformation"
               placeholder="Tell us more about you product that you wish.."
               validate={required}
+              required
             />
             <Field
               component={Form.Input}
@@ -121,28 +123,30 @@ const SubmitWishStep1Component = props => {
               placeholder="Product URL from online shops like Amazon, eBay etc..."
               validate={required}
             />
-            <div
+
+            <label
               style={{
-                marginBottom: "4px"
+                display: "inline-block",
+                margin: "0 0 .28571429rem 0",
+                color: "rgba(0,0,0,.87)",
+                fontSize: ".92857143em",
+                fontWeight: "700",
+                textTransform: "none"
               }}
             >
-              <label
-                style={{
-                  fontWeight: 600,
-                  marginBottom: "2px"
-                }}
-              >
-                Item Parameters
-              </label>
-              <label
-                style={{
-                  color: "red",
-                  margin: "0 0px 0px 3px"
-                }}
-              >
-                *
-              </label>
-            </div>
+              Item Parameters
+            </label>
+
+            <label
+              style={{
+                verticalAlign: "top",
+                margin: "-.2em 0 0 .2em",
+                color: "#db2828"
+              }}
+            >
+              *
+            </label>
+
             <Form.Group widths="equal">
               <Field
                 component={renderSelect}
@@ -153,19 +157,65 @@ const SubmitWishStep1Component = props => {
                   { key: "b", text: "Big", value: "big" }
                 ]}
                 placeholder="Small (Medium, Big)"
+                required
               />
               <Field
                 component={Form.Input}
                 name="itemWeight"
-                placeholder="Weight (kg)"
+                icon="weight"
+                iconPosition="left"
+                placeholder="Enter weight... (kg)"
                 validate={required}
               />
             </Form.Group>
+            <Form.Group>
+              <Field component={renderCheckbox} label="Bulky" name="isBulky" />
+              <Field
+                component={renderCheckbox}
+                label="Fragile"
+                name="isFragile"
+              />
+              <Field
+                component={renderCheckbox}
+                label="Dangerous"
+                name="isDangerous"
+              />
+            </Form.Group>
+            <Divider hidden />
+            <Divider hidden />
             <Field
-              component={renderCheckbox}
-              label="I agree to the Terms and Conditions"
-              name="isAgreed"
+              component={Form.Input}
+              label="Item Price"
+              name="productName"
+              icon="dollar"
+              iconPosition="left"
+              placeholder="Enter the item price"
+              validate={required}
+              required
             />
+            <Divider hidden />
+            <Divider hidden />
+            <Grid>
+              <Grid.Column width={8}>
+                <label
+                  style={{
+                    display: "inline-block",
+                    margin: "0 0 .28571429rem 0",
+                    color: "rgba(0,0,0,.87)",
+                    fontSize: ".92857143em",
+                    fontWeight: "700",
+                    textTransform: "none"
+                  }}
+                >
+                  Quantity
+                </label>
+              </Grid.Column>
+              <Grid.Column width={8} align="right">
+                <Icon disabled circular color="blue" name="minus" />
+                <Label as="h2">1</Label>
+                <Icon link circular color="blue" name="plus" />
+              </Grid.Column>
+            </Grid>
           </Form>
         </Segment>
       </Grid.Column>
