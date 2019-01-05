@@ -254,7 +254,9 @@ const SubmitWishStep1Component = props => {
                 <Header size="medium">Item Price</Header>
               </Grid.Column>
               <Grid.Column floated="right" textAlign="right">
-                <Header size="large">${props.formData.itemPrice}.00</Header>
+                <Header size="large">
+                  ${props.formData.itemPrice * props.formData.quantity}.00
+                </Header>
               </Grid.Column>
             </Grid>
           ) : null}
@@ -271,5 +273,6 @@ const SubmitWishStep1Component = props => {
   );
 };
 export default reduxForm({
-  form: "wishDetailsStep1Form"
+  form: "wishDetailsStep1Form",
+  initialValues: { quantity: 1 }
 })(SubmitWishStep1Component);
