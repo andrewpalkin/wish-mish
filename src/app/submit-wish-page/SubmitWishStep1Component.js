@@ -23,9 +23,11 @@ const normalizeDoubleNumber = value => {
 
   let matchResult = value.match(/^\d+(\.)?(\d{1,2})?$/g);
 
-  if (matchResult[0].length > 0) return matchResult[0];
+  if (matchResult && matchResult[0].length > 0) {
+    return matchResult[0];
+  }
 
-  return matchResult.input.slice(0, matchResult.input.length - 1);
+  return value.slice(0, value.length - 1);
 };
 
 const renderCheckbox = field => (
