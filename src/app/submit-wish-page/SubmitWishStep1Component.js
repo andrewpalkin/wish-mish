@@ -42,6 +42,21 @@ const renderRadio = field => (
   />
 );
 
+const renderInput = field => (
+  <Form.Input
+    required={field.required}
+    label={field.label}
+    name={field.input.name}
+    onChange={(e, { value }) => field.input.onChange(value)}
+    error={field.meta.touched && field.meta.error ? true : false}
+    placeholder={
+      field.meta.touched && field.meta.error
+        ? "Please fill mandatory field"
+        : field.placeholder
+    }
+  />
+);
+
 const renderSelect = field => (
   <Form.Select
     label={field.label}
@@ -51,6 +66,7 @@ const renderSelect = field => (
     placeholder={field.placeholder}
     value={field.input.value}
     required={field.required}
+    error={field.meta.touched && field.meta.error ? true : false}
   />
 );
 
@@ -102,7 +118,7 @@ const SubmitWishStep1Component = props => {
           </Header>
           <Form onSubmit={handleSubmit}>
             <Field
-              component={Form.Input}
+              component={renderInput}
               label="Product Name"
               name="productName"
               placeholder="Product name that you wish..."
@@ -158,15 +174,17 @@ const SubmitWishStep1Component = props => {
                   { key: "b", text: "Big", value: "big" }
                 ]}
                 placeholder="Small (Medium, Big)"
+                validate={required}
                 required
               />
               <Field
-                component={Form.Input}
+                component={renderInput}
                 name="itemWeight"
                 icon="weight"
                 iconPosition="left"
                 placeholder="Enter weight... (kg)"
                 validate={required}
+                required
               />
             </Form.Group>
             <Form.Group>
@@ -185,7 +203,7 @@ const SubmitWishStep1Component = props => {
             <Divider hidden />
 
             <Field
-              component={Form.Input}
+              component={renderInput}
               type="number"
               label="Item Price"
               name="itemPrice"
