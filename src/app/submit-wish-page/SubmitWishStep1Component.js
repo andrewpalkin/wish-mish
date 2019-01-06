@@ -186,6 +186,7 @@ const SubmitWishStep1Component = props => {
 
             <Field
               component={Form.Input}
+              type="number"
               label="Item Price"
               name="itemPrice"
               icon="dollar"
@@ -211,7 +212,7 @@ const SubmitWishStep1Component = props => {
           </label>
           <Divider clearing />
           {props.formData && props.formData.itemPrice ? (
-            <Grid style={{ marginBottom: "4px" }} columns="equal">
+            <Grid style={{ marginBottom: "5px" }} columns="equal">
               <Grid.Column floated="left">
                 <Header size="medium">Item Price</Header>
               </Grid.Column>

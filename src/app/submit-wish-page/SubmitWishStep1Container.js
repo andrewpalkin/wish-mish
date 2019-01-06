@@ -13,9 +13,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const SubmitWishStep1Coontainer = connect(
+const SubmitWishStep1Container = connect(
   mapStateToProps,
   mapDispatchToProps
 )(SubmitWishStep1Component);
 
-export default SubmitWishStep1Coontainer;
+export default SubmitWishStep1Container;
