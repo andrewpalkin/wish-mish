@@ -36,21 +36,31 @@ export default class MyCustomInput extends React.Component {
           </label>
         </Grid.Column>
         <Grid.Column width={8} align="right">
-          <Icon
-            disabled={value < 2 ? true : false}
-            circular
-            color="blue"
-            name="minus"
-            style={{ marginRight: "6px" }}
-            onClick={value > 1 ? () => onChange(+value - 1) : null}
-          />
+          {value < 2 ? (
+            <Icon
+              disabled
+              circular
+              color="blue"
+              name="minus"
+              style={{ marginRight: "10px" }}
+            />
+          ) : (
+            <Icon
+              link
+              circular
+              color="blue"
+              name="minus"
+              style={{ marginRight: "10px" }}
+              onClick={value > 1 ? () => onChange(+value - 1) : null}
+            />
+          )}
           <label>{value}</label>
           <Icon
             link
             circular
             color="blue"
             name="plus"
-            style={{ marginLeft: "6px" }}
+            style={{ marginLeft: "10px" }}
             onClick={() => onChange(+value + 1)}
           />
         </Grid.Column>

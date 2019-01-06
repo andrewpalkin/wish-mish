@@ -33,44 +33,6 @@ const renderCheckbox = field => (
   />
 );
 
-const renderItemQuantityComponent = field => (
-  <Grid>
-    <Grid.Column width={8}>
-      <label
-        style={{
-          display: "inline-block",
-          margin: "0 0 .28571429rem 0",
-          color: "rgba(0,0,0,.87)",
-          fontSize: ".92857143em",
-          fontWeight: "700",
-          textTransform: "none"
-        }}
-      >
-        Quantity
-      </label>
-    </Grid.Column>
-    <Grid.Column width={8} align="right">
-      <Icon
-        disabled
-        circular
-        color="blue"
-        name="minus"
-        style={{ marginRight: "6px" }}
-        onClick={() => field.input.onChange(field.input.value - 1)}
-      />
-      <label as="h2">{field.input.value ? field.input.value : 1}</label>
-      <Icon
-        link
-        circular
-        color="blue"
-        name="plus"
-        style={{ marginLeft: "6px" }}
-        onClick={() => field.input.onChange(field.input.value + 1)}
-      />
-    </Grid.Column>
-  </Grid>
-);
-
 const renderRadio = field => (
   <Form.Radio
     checked={field.input.value === field.radioValue}
