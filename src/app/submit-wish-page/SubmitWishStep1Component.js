@@ -138,7 +138,6 @@ const SubmitWishStep1Component = props => {
               label="Product URL"
               name="productURL"
               placeholder="Product URL from online shops like Amazon, eBay etc..."
-              validate={required}
             />
 
             <label
@@ -255,5 +254,6 @@ const SubmitWishStep1Component = props => {
 };
 export default reduxForm({
   form: "wishDetailsStep1Form",
-  initialValues: { quantity: 1 }
+  initialValues: { quantity: 1 },
+  destroyOnUnmount: false
 })(SubmitWishStep1Component);

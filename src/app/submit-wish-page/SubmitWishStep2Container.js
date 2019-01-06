@@ -3,10 +3,10 @@ import { submit } from "redux-form";
 import SubmitWishStep2Component from "./SubmitWishStep2Component";
 
 const mapStateToProps = state => {
-  return state.form.profile
+  return state.form.wishDetailsStep2Form
     ? {
-        submitSucceeded: state.form.profile.submitSucceeded,
-        values: state.form.profile.values
+        submitSucceeded: state.form.wishDetailsStep2Form.submitSucceeded,
+        values: state.form.wishDetailsStep2Form.values
       }
     : {};
 };
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleSubmitWishDeliveryFormStep2: () =>
-      dispatch(submit("wish-details-step2"))
+      dispatch(submit("wishDetailsStep2Form"))
   };
 };
 

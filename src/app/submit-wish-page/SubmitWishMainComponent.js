@@ -55,6 +55,8 @@ export default class SubmitWishMainComponent extends Component {
     const showStep2 = this.state.showStep2;
     const showStep3 = this.state.showStep3;
     const formDataStep1 = this.props.formDataStep1;
+    const formDataStep2 = this.props.formDataStep2;
+    const formDataStep3 = this.props.formDataStep3;
 
     return (
       <>
@@ -96,6 +98,8 @@ export default class SubmitWishMainComponent extends Component {
         ) : null}
         {showStep2 ? (
           <SubmitWishStep2Container
+            formDataStep1={formDataStep1}
+            formData={formDataStep2}
             onSubmit={this.handleWishDeliveryDetailsFormSubmit}
           />
         ) : null}
