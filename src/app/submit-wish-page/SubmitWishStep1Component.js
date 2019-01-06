@@ -16,11 +16,16 @@ import ItemQuantityComponent from "../common/form-component/ItemQuantityComponen
 
 const required = value => (value ? undefined : "Required");
 
-const pStyle = {
-  after: {
-    content: "*",
-    color: "red"
+const normalizeDoubleNumber = value => {
+  if (!value) {
+    return value;
   }
+
+  let matchResult = value.match(/^\d+(\.)?(\d{1,2})?$/g);
+
+  if (matchResult[0].length > 0) return matchResult[0];
+
+  return matchResult.input.slice(0, matchResult.input.length - 1);
 };
 
 const renderCheckbox = field => (
@@ -186,7 +191,7 @@ const SubmitWishStep1Component = props => {
 
             <Field
               component={Form.Input}
-              type="number"
+              normalize={normalizeDoubleNumber}
               label="Item Price"
               name="itemPrice"
               icon="dollar"
@@ -237,5 +242,5 @@ const SubmitWishStep1Component = props => {
 };
 export default reduxForm({
   form: "wishDetailsStep1Form",
-  initialValues: { quantity: 1 }
+  initialValues: { quantity: 1, minPrice: 0 }
 })(SubmitWishStep1Component);

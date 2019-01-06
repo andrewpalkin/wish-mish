@@ -4,13 +4,13 @@
   "private": true,
   "dependencies": {
     "lodash": "4.17.11",
-    "react-redux": "latest",
-    "redux": "4.0.1",
-    "redux-form": "8.1.0",
     "react": "16.7.0",
     "react-dom": "16.7.0",
+    "react-redux": "latest",
     "react-router-dom": "4.3.1",
     "react-scripts": "2.1.2",
+    "redux": "4.0.1",
+    "redux-form": "8.1.0",
     "semantic-ui-react": "0.84.0"
   },
   "scripts": {
