@@ -30,6 +30,10 @@ const normalizeDoubleNumber = value => {
   return value.slice(0, value.length - 1);
 };
 
+const onlyNums = (value, previousValue) => {
+  return value.match(/^([1-9]+(\.[0-9]{1})?)$/g) ? value : previousValue;
+};
+
 const renderCheckbox = field => (
   <Form.Checkbox
     toggle
@@ -54,6 +58,7 @@ const renderInput = field => (
     required={field.required}
     label={field.label}
     name={field.input.name}
+    value={field.input.value}
     onChange={(e, { value }) => field.input.onChange(value)}
     error={field.meta.touched && field.meta.error ? true : false}
     placeholder={
@@ -218,6 +223,7 @@ const SubmitWishStep1Component = props => {
               placeholder="Enter the item price"
               validate={required}
               required
+              normalize={onlyNums}
             />
             <Divider hidden />
             <Field
