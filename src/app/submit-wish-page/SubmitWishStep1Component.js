@@ -16,22 +16,12 @@ import ItemQuantityComponent from "../common/form-component/ItemQuantityComponen
 
 const required = value => (value ? undefined : "Required");
 
-const normalizeDoubleNumber = value => {
+const normalizeDoubleNumber = (value, previousValue) => {
   if (!value) {
     return value;
   }
 
-  let matchResult = value.match(/^\d+(\.)?(\d{1,2})?$/g);
-
-  if (matchResult && matchResult[0].length > 0) {
-    return matchResult[0];
-  }
-
-  return value.slice(0, value.length - 1);
-};
-
-const onlyNums = (value, previousValue) => {
-  return value.match(/^([1-9]+(\.[0-9]{1})?)$/g) ? value : previousValue;
+  return value.match(/^(?!(0))\d+(\.)?(\d{1,2})?$/g) ? value : previousValue;
 };
 
 const renderCheckbox = field => (
@@ -214,7 +204,6 @@ const SubmitWishStep1Component = props => {
             <Divider hidden />
 
             <Field
-              normalize={normalizeDoubleNumber}
               component={renderInput}
               label="Item Price"
               name="itemPrice"
@@ -223,7 +212,7 @@ const SubmitWishStep1Component = props => {
               placeholder="Enter the item price"
               validate={required}
               required
-              normalize={onlyNums}
+              normalize={normalizeDoubleNumber}
             />
             <Divider hidden />
             <Field
