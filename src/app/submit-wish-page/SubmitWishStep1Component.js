@@ -21,7 +21,10 @@ const normalizeDoubleNumber = (value, previousValue) => {
     return value;
   }
 
-  return value.match(/^(?!(0))\d+(\.)?(\d{1,2})?$/g) ? value : previousValue;
+  return value.match(/^(?!(0))\d{1,4}\.(\d{1,2})?$/g) ||
+    value.match(/^(?!(0))^\d{1,4}\.?$/g)
+    ? value
+    : previousValue;
 };
 
 const renderCheckbox = field => (
@@ -49,6 +52,8 @@ const renderInput = field => (
     label={field.label}
     name={field.input.name}
     value={field.input.value}
+    icon={field.icon}
+    iconPosition={field.iconPosition}
     onChange={(e, { value }) => field.input.onChange(value)}
     error={field.meta.touched && field.meta.error ? true : false}
     placeholder={
