@@ -44,3 +44,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 Mocks Files https://ninjamock.com/s/Z59WLRx
+
+Style
+style={{ background: "red", ":hover": { background: "green" } }}

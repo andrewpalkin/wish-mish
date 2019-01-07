@@ -13,9 +13,9 @@ import {
   Step
 } from "semantic-ui-react";
 
-import SubmitWishStep1Container from "./SubmitWishStep1Container";
-import SubmitWishStep2Container from "./SubmitWishStep2Container";
-import SubmitWishStep3Container from "./SubmitWishStep3Container";
+import SubmitWishStep1Component from "./SubmitWishStep1Component";
+import SubmitWishStep2Component from "./SubmitWishStep2Component";
+import SubmitWishStep3Component from "./SubmitWishStep3Component";
 
 export default class SubmitWishMainComponent extends Component {
   state = {
@@ -25,7 +25,7 @@ export default class SubmitWishMainComponent extends Component {
     currentStep: 1
   };
 
-  handleWishDetailsFormSubmit = e => {
+  showStep2 = e => {
     this.setState({
       showStep2: true,
       showStep1: false,
@@ -34,7 +34,7 @@ export default class SubmitWishMainComponent extends Component {
     });
   };
 
-  handleWishDeliveryDetailsFormSubmit = e => {
+  showStep3 = e => {
     this.setState({
       showStep1: false,
       showStep2: false,
@@ -50,13 +50,11 @@ export default class SubmitWishMainComponent extends Component {
   };
   render() {
     let currentStep = this.state.currentStep;
-    const submitSucceeded = this.state.submitSucceeded;
     const showStep1 = this.state.showStep1;
     const showStep2 = this.state.showStep2;
     const showStep3 = this.state.showStep3;
     const formDataStep1 = this.props.formDataStep1;
     const formDataStep2 = this.props.formDataStep2;
-    const formDataStep3 = this.props.formDataStep3;
 
     return (
       <>
@@ -91,19 +89,27 @@ export default class SubmitWishMainComponent extends Component {
           </Step>
         </Step.Group>
         {showStep1 ? (
-          <SubmitWishStep1Container
-            onSubmit={this.handleWishDetailsFormSubmit}
-            formData={formDataStep1}
+          <SubmitWishStep1Component
+            onSubmit={this.showStep2}
+            formDataStep1={formDataStep1}
+            handleSubmitFormStep1={this.props.handleSubmitWishDetailsFormStep1}
           />
         ) : null}
         {showStep2 ? (
-          <SubmitWishStep2Container
+          <SubmitWishStep2Component
             formDataStep1={formDataStep1}
-            formData={formDataStep2}
-            onSubmit={this.handleWishDeliveryDetailsFormSubmit}
+            formDataStep2={formDataStep2}
+            onSubmit={this.showStep3}
+            handleSubmitFormStep2={this.props.handleSubmitWishDetailsFormStep2}
           />
         ) : null}
-        {showStep3 ? <SubmitWishStep3Container /> : null}
+        {showStep3 ? (
+          <SubmitWishStep3Component
+            formDataStep1={formDataStep1}
+            formDataStep2={formDataStep2}
+            publishWish={this.props.publishWish}
+          />
+        ) : null}
       </>
     );
   }

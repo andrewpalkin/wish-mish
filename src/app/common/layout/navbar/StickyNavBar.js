@@ -11,12 +11,13 @@ import {
   Icon,
   Header
 } from "semantic-ui-react";
+import toClass from "recompose/toClass";
+const ButtonAsClass = toClass(Button);
 
 const fixedMenuStyle = {
   border: "1px solid #ddd",
   boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
   padding: "5px"
-
 };
 
 const menuStyle = {
@@ -62,7 +63,6 @@ export default class StickyNavBar extends Component {
         once={false}
       >
         <Menu
-          
           pointing
           borderless
           fixed={menuFixed ? "top" : undefined}
@@ -86,7 +86,7 @@ export default class StickyNavBar extends Component {
             </Menu.Item>
 
             <Menu.Menu position="right">
-              <Button
+              <ButtonAsClass
                 compact
                 style={{
                   margin: "15px",
@@ -97,7 +97,8 @@ export default class StickyNavBar extends Component {
                 to="/submit-wish"
               >
                 Add Wish
-              </Button>
+              </ButtonAsClass>
+
               <Dropdown text="Dropdown" pointing className="link item">
                 <Dropdown.Menu>
                   <Dropdown.Item>List Item</Dropdown.Item>

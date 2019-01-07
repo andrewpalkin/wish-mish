@@ -113,8 +113,7 @@ const renderTextArea = field => (
 );
 
 const SubmitWishStep1Component = props => {
-  const { handleSubmit, reset, myValues } = props;
-  console.log(myValues);
+  const { handleSubmit, reset, formDataStep1 = {} } = props;
 
   return (
     <Grid stackable>
@@ -232,10 +231,10 @@ const SubmitWishStep1Component = props => {
       <Grid.Column width={5}>
         <Segment>
           <label as="h3">
-            {props.formData ? props.formData.productName : ""}
+            {formDataStep1 ? formDataStep1.productName : ""}
           </label>
           <Divider clearing />
-          {props.formData && props.formData.itemPrice ? (
+          {formDataStep1 && formDataStep1.itemPrice ? (
             <Grid style={{ marginBottom: "5px" }} columns="equal">
               <Grid.Column floated="left">
                 <Header size="medium">Item Price</Header>
@@ -243,18 +242,14 @@ const SubmitWishStep1Component = props => {
               <Grid.Column floated="right" textAlign="right">
                 <Header size="medium">
                   <Icon name="dollar" />
-                  {(props.formData.itemPrice * props.formData.quantity)
+                  {(formDataStep1.itemPrice * formDataStep1.quantity)
                     .toFixed(2)
                     .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                 </Header>
               </Grid.Column>
             </Grid>
           ) : null}
-          <Button
-            primary
-            fluid
-            onClick={props.handleSubmitWishDetailsFormStep1}
-          >
+          <Button primary fluid onClick={props.handleSubmitFormStep1}>
             Next
           </Button>
         </Segment>

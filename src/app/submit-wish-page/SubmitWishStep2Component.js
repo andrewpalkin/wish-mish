@@ -121,9 +121,7 @@ const renderTextArea = field => (
 );
 
 const SubmitWishStep2Component = props => {
-  const { handleSubmit, reset, myValues } = props;
-  console.log(myValues);
-
+  const { handleSubmit, reset, formDataStep1 = {}, formDataStep2 = {} } = props;
   return (
     <Grid stackable>
       <Grid.Column width={11}>
@@ -137,9 +135,9 @@ const SubmitWishStep2Component = props => {
               name="deliveryTo"
               label="Delivery to"
               options={[
-                { key: "s", text: "Sderot", value: "sderot" },
-                { key: "r", text: "Raanana", value: "raanana" },
-                { key: "n", text: "Nazeret", value: "nazeret" }
+                { key: "s", text: "Sderot", value: "Sderot" },
+                { key: "r", text: "Raanana", value: "Raanana" },
+                { key: "n", text: "Nazeret", value: "Nazeret" }
               ]}
               placeholder="Office location"
               validate={required}
@@ -176,29 +174,48 @@ const SubmitWishStep2Component = props => {
       </Grid.Column>
       <Grid.Column width={5}>
         <Segment>
-          <label as="h3">
-            {props.formDataStep1 ? props.formDataStep1.productName : ""}
+          <label as="h1">
+            {formDataStep1 ? formDataStep1.productName : ""}
           </label>
+          {formDataStep2.deliveryTo ||
+          formDataStep2.deliveryFrom ||
+          formDataStep2.deliveryBeforeDate ? (
+            <Divider clearing />
+          ) : null}
+          {formDataStep2.deliveryTo ? (
+            <Header size="medium">Delivey to {formDataStep2.deliveryTo}</Header>
+          ) : null}
+          {formDataStep2.deliveryFrom ? (
+            <Header size="medium">
+              Delivey from {formDataStep2.deliveryFrom}
+            </Header>
+          ) : null}
+          {formDataStep2.deliveryBeforeDate ? (
+            <Header size="medium">
+              Delivery before {formDataStep2.deliveryBeforeDate}
+            </Header>
+          ) : null}
           <Divider clearing />
-          {props.formDataStep1 && props.formDataStep1.itemPrice ? (
+          {formDataStep1 && formDataStep1.itemPrice ? (
             <Grid style={{ marginBottom: "5px" }} columns="equal">
               <Grid.Column floated="left">
                 <Header size="medium">Item Price</Header>
+                {formDataStep2.reward ? (
+                  <Header size="medium">Reward</Header>
+                ) : null}
               </Grid.Column>
               <Grid.Column floated="right" textAlign="right">
                 <Header size="large">
-                  $
-                  {props.formDataStep1.itemPrice * props.formDataStep1.quantity}
+                  ${formDataStep1.itemPrice * formDataStep1.quantity}
                   .00
                 </Header>
+                {formDataStep2.reward ? (
+                  <Header size="medium">${formDataStep2.reward}</Header>
+                ) : null}
               </Grid.Column>
             </Grid>
           ) : null}
-          <Button
-            primary
-            fluid
-            onClick={props.handleSubmitWishDetailsFormStep1}
-          >
+          <Button primary fluid onClick={props.handleSubmitFormStep2}>
             Next
           </Button>
         </Segment>
@@ -207,5 +224,6 @@ const SubmitWishStep2Component = props => {
   );
 };
 export default reduxForm({
-  form: "wishDetailsStep2Form"
+  form: "wishDetailsStep2Form",
+  destroyOnUnmount: false
 })(SubmitWishStep2Component);
