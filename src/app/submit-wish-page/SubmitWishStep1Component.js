@@ -241,8 +241,11 @@ const SubmitWishStep1Component = props => {
                 <Header size="medium">Item Price</Header>
               </Grid.Column>
               <Grid.Column floated="right" textAlign="right">
-                <Header size="large">
-                  ${props.formData.itemPrice * props.formData.quantity}.00
+                <Header size="medium">
+                  <Icon name="dollar" />
+                  {(props.formData.itemPrice * props.formData.quantity)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                 </Header>
               </Grid.Column>
             </Grid>
