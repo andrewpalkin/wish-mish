@@ -9,7 +9,7 @@ const OnTopNavBar = () => {
           "linear-gradient(to top, #000000, #1b1a1a, #302d2c, #44423f, #575954)",
         minHeight: "160px",
         opacity: 0.9,
-        marginBottom: "14px"
+        marginBottom: "12px"
       }}
     >
       <Grid>

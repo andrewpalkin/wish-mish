@@ -58,8 +58,8 @@ export default class StickyNavBar extends Component {
 
     return (
       <Visibility
-        onBottomPassed={this.stickTopMenu}
-        onBottomVisible={this.unStickTopMenu}
+        onTopPassed={this.stickTopMenu}
+        onTopVisible={this.unStickTopMenu}
         once={false}
       >
         <Menu
