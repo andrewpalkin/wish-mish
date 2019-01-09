@@ -15,6 +15,7 @@
     "redux-form": "8.1.0",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
+    "reduxsauce": "1.0.1",
     "semantic-ui-calendar-react": "0.12.2",
     "semantic-ui-react": "0.84.0"
   },
