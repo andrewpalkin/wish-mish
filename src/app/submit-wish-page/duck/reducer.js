@@ -12,6 +12,7 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
 
     case types.SUBMIT_WISH_SUCCESS: {
       const { submitWishResponse } = action;
+      console.log("submit-reducer: ", submitWishResponse);
       return {
         ...state,
         submitWishResponse,

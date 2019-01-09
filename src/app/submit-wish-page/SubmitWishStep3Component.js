@@ -96,7 +96,16 @@ const SubmitWishStep3Component = props => {
               </Grid.Column>
             </Grid>
           ) : null}
-          <Button primary fluid onClick={props.publishWish}>
+          <Button
+            primary
+            fluid
+            onClick={() =>
+              props.publishWish({
+                ...props.formDataStep1,
+                ...props.formDataStep2
+              })
+            }
+          >
             Publish
           </Button>
         </Segment>

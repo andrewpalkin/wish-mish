@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import SubmitWishMainComponent from "./SubmitWishMainComponent";
 import { submit, reset } from "redux-form";
+import { submitWishOperations } from "./duck";
 
 const mapStateToProps = state => {
   let formDataStep1 = state.form.wishDetailsStep1Form
@@ -23,17 +24,24 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   // 'fetchSubredditJson()' will trigger fetching of JSON data from
   // the Reddit API and pushes the relevant data into the Redux store.
+  const handleSubmitWishDetailsFormStep1 = () => {
+    dispatch(submit("wishDetailsStep1Form"));
+  };
+
+  const handleSubmitWishDetailsFormStep2 = () => {
+    dispatch(submit("wishDetailsStep2Form"));
+  };
+
+  const publishWish = submitWishData => {
+    console.log("submitWishContainer-> submitWishData: ", submitWishData);
+    dispatch(submitWishOperations.submitWishOperation(submitWishData));
+    alert("Wish was published successfully");
+  };
 
   return {
-    handleSubmitWishDetailsFormStep1: () =>
-      dispatch(submit("wishDetailsStep1Form")),
-    handleSubmitWishDetailsFormStep2: () =>
-      dispatch(submit("wishDetailsStep2Form")),
-    publishWish: () => {
-      dispatch(reset("wishDetailsStep1Form"));
-      dispatch(reset("wishDetailsStep2Form"));
-      alert("Wish was published successfully");
-    }
+    handleSubmitWishDetailsFormStep1,
+    handleSubmitWishDetailsFormStep2,
+    publishWish
   };
 };
 
