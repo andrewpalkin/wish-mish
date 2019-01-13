@@ -5,7 +5,7 @@ import StickyNavBar from "./common/layout/navbar/StickyNavBar";
 import OnTopNavBar from "./common/layout/navbar/OnTopNavBar";
 import Footer from "./common/layout/footer/Footer";
 import { Container } from "semantic-ui-react";
-import HomePage from "./home-page/home";
+import HomePageContainer from "./home-page/HomeContainer";
 import SubmitWishMainContainer from "./submit-wish-page/SubmitWishMainContainer";
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
           <StickyNavBar />
           <Container style={{ marginTop: "120px" }}>
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/" component={HomePageContainer} />
               <Route
                 exact
                 path="/submit-wish"

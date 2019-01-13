@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "react-dom";
 import App from "./app/App";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
@@ -26,11 +26,13 @@ const store = createStore(
     devtoolMiddleware
   )
 );
-ReactDOM.render(
+
+const Main = () => (
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById("root")
+  </Provider>
 );
+
+render(<Main />, document.getElementById("root"));
 
 serviceWorker.unregister();
