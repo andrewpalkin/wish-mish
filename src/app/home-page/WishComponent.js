@@ -13,6 +13,7 @@ import {
 
 const WishComponent = props => {
   console.log(" fromWishComponent FireStore data ", props);
+  console.log("Reward = ", props.reward ? "true" : "false");
   return (
     <Card fluid link>
       <Card.Content>
@@ -106,72 +107,96 @@ const WishComponent = props => {
                         marginLeft: "10px"
                       }}
                     >
-                      United States of America
+                      {props.deliveryFrom}
                     </Header>
                   </Grid.Column>
-                  <Grid.Column>
-                    <label
-                      style={{
-                        display: "inline-block",
-                        fontSize: "1em",
-                        color: "rgba(0, 0, 0, 0.4)"
-                      }}
-                    >
-                      Before
-                    </label>
-                    <Header
-                      as="h4"
-                      style={{
-                        display: "inline-block",
-                        marginLeft: "10px"
-                      }}
-                    >
-                      May 13, 2019
-                    </Header>
-                  </Grid.Column>
+                  {props.deliveryBeforeDate ? (
+                    <Grid.Column>
+                      <label
+                        style={{
+                          display: "inline-block",
+                          fontSize: "1em",
+                          color: "rgba(0, 0, 0, 0.4)"
+                        }}
+                      >
+                        Before
+                      </label>
+                      <Header
+                        as="h4"
+                        style={{
+                          display: "inline-block",
+                          marginLeft: "10px"
+                        }}
+                      >
+                        {props.deliveryBeforeDate}
+                      </Header>
+                    </Grid.Column>
+                  ) : (
+                    ""
+                  )}
                 </Grid>
               </Segment>
             </Grid.Row>
-            <Grid.Row>
-              <label
-                style={{
-                  display: "inline-block",
-                  fontSize: "1em",
-                  color: "rgba(0, 0, 0, 0.4)"
-                }}
-              >
-                Item URL
-              </label>
-              <Header
-                color="blue"
-                as="a"
-                style={{
-                  display: "inline-block",
-                  marginLeft: "10px"
-                }}
-              >
-                www.amazon.com
-              </Header>
-            </Grid.Row>
+            {props.productURL ? (
+              <Grid.Row>
+                <label
+                  style={{
+                    display: "inline-block",
+                    fontSize: "1em",
+                    color: "rgba(0, 0, 0, 0.4)"
+                  }}
+                >
+                  Item URL
+                </label>
+                <Header
+                  color="blue"
+                  as="a"
+                  style={{
+                    display: "inline-block",
+                    marginLeft: "10px"
+                  }}
+                >
+                  {props.productURL}
+                </Header>
+              </Grid.Row>
+            ) : (
+              ""
+            )}
             <Divider />
-            <label
-              style={{
-                fontWeight: 700,
-                fontSize: "1.28571429em",
-                marginTop: "-.21425em",
-                lineHeight: "1.28571429em"
-              }}
-            >
-              Traveler reward
-            </label>
-            <Divider hidden />
+            {props.reward ? (
+              <>
+                <label
+                  style={{
+                    fontWeight: 700,
+                    fontSize: "1.28571429em",
+                    marginTop: "-.21425em",
+                    lineHeight: "1.28571429em"
+                  }}
+                >
+                  Traveler reward
+                </label>
+                <Divider hidden />
+              </>
+            ) : (
+              ""
+            )}
+
             <Grid>
               <Grid.Column width={8} verticalAlign="middle">
                 <Header size="medium">
-                  <Icon name="dollar" />
-                  {(20).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                  {props.reward ? (
+                    <>
+                      <Icon name="dollar" />
+                      {Number(props.reward)
+                        .toFixed(2)
+                        .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </Header>
               </Grid.Column>
+
               <Grid.Column width={8} align="right" verticalAlign="middle">
                 <Button basic>Make Offer</Button>
               </Grid.Column>
@@ -186,7 +211,10 @@ const WishComponent = props => {
                     color: "rgba(0, 0, 0, 0.4)"
                   }}
                 >
-                  Item price: $240.00
+                  Item price: $
+                  {(props.itemPrice * props.quantity)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                 </label>
               </Grid.Column>
               <Grid.Column width={8} align="right" verticalAlign="middle">
