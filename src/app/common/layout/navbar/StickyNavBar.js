@@ -9,7 +9,8 @@ import {
   Visibility,
   Button,
   Icon,
-  Header
+  Header,
+  Modal
 } from "semantic-ui-react";
 import toClass from "recompose/toClass";
 const ButtonAsClass = toClass(Button);
@@ -32,7 +33,8 @@ const menuStyle = {
 export default class StickyNavBar extends Component {
   state = {
     menuFixed: false,
-    overlayFixed: false
+    overlayFixed: false,
+    showLoginModal: false
   };
 
   handleOverlayRef = c => {
@@ -53,8 +55,15 @@ export default class StickyNavBar extends Component {
 
   unStickTopMenu = () => this.setState({ menuFixed: false });
 
+  close = () => this.setState({ showLoginModal: false });
+
+  show = e => {
+    e.preventDefault();
+    this.setState({ showLoginModal: true });
+  };
+
   render() {
-    const { menuFixed } = this.state;
+    const { menuFixed, showLoginModal } = this.state;
 
     return (
       <Visibility
@@ -62,6 +71,21 @@ export default class StickyNavBar extends Component {
         onTopVisible={this.unStickTopMenu}
         once={false}
       >
+        <Modal open={showLoginModal} size="small" onClose={this.close}>
+          <Modal.Header>Login</Modal.Header>
+          <Modal.Content>
+            <p>PLease Login</p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button negative>No</Button>
+            <Button
+              positive
+              icon="checkmark"
+              labelPosition="right"
+              content="Yes"
+            />
+          </Modal.Actions>
+        </Modal>
         <Menu
           pointing
           borderless
@@ -69,55 +93,57 @@ export default class StickyNavBar extends Component {
           style={menuFixed ? fixedMenuStyle : menuStyle}
           inverted
         >
-          <Container>
-            <Menu.Item>
-              <Icon loading name="certificate" />
-            </Menu.Item>
-            <Menu.Item>
-              <Header inverted as={NavLink} to="/">
-                WISH MISH
-              </Header>
-            </Menu.Item>
-            <Menu.Item as={NavLink} name="home" exact to="/">
-              Home
-            </Menu.Item>
-            <Menu.Item as={NavLink} to="/about">
-              About
-            </Menu.Item>
+          <Menu.Item>
+            <Icon loading name="certificate" />
+          </Menu.Item>
+          <Menu.Item>
+            <Header inverted as={NavLink} to="/">
+              WISH MISH
+            </Header>
+          </Menu.Item>
+          <Menu.Item as={NavLink} name="home" exact to="/">
+            Home
+          </Menu.Item>
+          <Menu.Item as={NavLink} to="/about">
+            About
+          </Menu.Item>
 
-            <Menu.Menu position="right">
-              <ButtonAsClass
-                compact
-                style={{
-                  margin: "15px",
-                  backgroundColor: "#F89235",
-                  color: "white"
-                }}
-                as={NavLink}
-                to="/submit-wish"
-              >
-                Add Wish
-              </ButtonAsClass>
+          <Menu.Menu position="right">
+            <Menu.Item onClick={this.show}>Login</Menu.Item>
+            <Menu.Item as={NavLink} to="/signup">
+              Sign Up
+            </Menu.Item>
+            <ButtonAsClass
+              compact
+              style={{
+                margin: "15px",
+                backgroundColor: "#F89235",
+                color: "white"
+              }}
+              as={NavLink}
+              to="/submit-wish"
+            >
+              Add Wish
+            </ButtonAsClass>
 
-              <Dropdown text="Dropdown" pointing className="link item">
-                <Dropdown.Menu>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Header>Header Item</Dropdown.Header>
-                  <Dropdown.Item>
-                    <i className="dropdown icon" />
-                    <span className="text">Submenu</span>
-                    <Dropdown.Menu>
-                      <Dropdown.Item>List Item</Dropdown.Item>
-                      <Dropdown.Item>List Item</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown.Item>
-                  <Dropdown.Item>List Item</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Menu.Menu>
-          </Container>
+            <Dropdown text="Dropdown" className="link item">
+              <Dropdown.Menu>
+                <Dropdown.Item>List Item</Dropdown.Item>
+                <Dropdown.Item>List Item</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Header>Header Item</Dropdown.Header>
+                <Dropdown.Item>
+                  <i className="dropdown icon" />
+                  <span className="text">Submenu</span>
+                  <Dropdown.Menu>
+                    <Dropdown.Item>List Item</Dropdown.Item>
+                    <Dropdown.Item>List Item</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown.Item>
+                <Dropdown.Item>List Item</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Menu>
         </Menu>
       </Visibility>
     );
