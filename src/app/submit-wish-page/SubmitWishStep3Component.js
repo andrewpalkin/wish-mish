@@ -1,10 +1,6 @@
-import React, { Fragment } from "react";
-import { Field, reduxForm } from "redux-form";
+import React from "react";
 import {
-  Form,
   Message,
-  Label,
-  Transition,
   Grid,
   Segment,
   Header,

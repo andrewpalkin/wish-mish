@@ -1,10 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Field, reduxForm } from "redux-form";
 import {
   Form,
-  Message,
-  Label,
-  Transition,
   Segment,
   Grid,
   Button,
@@ -12,7 +9,12 @@ import {
   Divider,
   Icon
 } from "semantic-ui-react";
+
 import ItemQuantityComponent from "../common/form-component/ItemQuantityComponent";
+import renderInput from "../common/render/RenderInput";
+import renderCheckbox from "../common/render/RenderCheckbox";
+import renderSelect from "../common/render/RenderSelect";
+import renderTextArea from "../common/render/RenderTextArea";
 
 const required = value => (value ? undefined : "Required");
 
@@ -26,91 +28,6 @@ const normalizeDoubleNumber = (value, previousValue) => {
     ? value
     : previousValue;
 };
-
-const renderCheckbox = field => (
-  <Form.Checkbox
-    toggle
-    checked={!!field.input.value}
-    name={field.input.name}
-    label={field.label}
-    onChange={(e, { checked }) => field.input.onChange(checked)}
-  />
-);
-
-const renderRadio = field => (
-  <Form.Radio
-    checked={field.input.value === field.radioValue}
-    label={field.label}
-    name={field.input.name}
-    onChange={(e, { checked }) => field.input.onChange(field.radioValue)}
-  />
-);
-
-const renderInput = field => (
-  <Form.Input
-    required={field.required}
-    label={field.label}
-    name={field.input.name}
-    value={field.input.value}
-    icon={field.icon}
-    iconPosition={field.iconPosition}
-    onChange={(e, { value }) => field.input.onChange(value)}
-    error={field.meta.touched && field.meta.error ? true : false}
-    placeholder={
-      field.meta.touched && field.meta.error
-        ? "Please fill mandatory field"
-        : field.placeholder
-    }
-  />
-);
-
-const renderSelect = field => (
-  <Form.Select
-    label={field.label}
-    name={field.input.name}
-    onChange={(e, { value }) => field.input.onChange(value)}
-    options={field.options}
-    placeholder={field.placeholder}
-    value={field.input.value}
-    required={field.required}
-    error={field.meta.touched && field.meta.error ? true : false}
-  />
-);
-
-const renderTextArea = field => (
-  <>
-    <Form.TextArea
-      {...field.input}
-      label={field.label}
-      placeholder={
-        field.meta.touched && field.meta.error
-          ? "Please fill mandatory field"
-          : field.placeholder
-      }
-      required={field.required}
-      error={field.meta.touched && field.meta.error ? true : false}
-    />
-
-    <Transition
-      animation="fade up"
-      duration={{ hide: 0, show: 500 }}
-      visible={field.meta.touched && field.meta.error ? true : false}
-    >
-      <Label
-        basic
-        pointing
-        style={{
-          marginTop: "0px",
-          marginBottom: "10px",
-          color: "#9f3a38",
-          borderColor: "#e0b4b4"
-        }}
-      >
-        {field.meta.error}
-      </Label>
-    </Transition>
-  </>
-);
 
 const SubmitWishStep1Component = props => {
   const { handleSubmit, reset, formDataStep1 = {} } = props;
