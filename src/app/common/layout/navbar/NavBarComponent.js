@@ -13,7 +13,7 @@ import {
   Modal
 } from "semantic-ui-react";
 import toClass from "recompose/toClass";
-import LoginLayout from "../login/LoginLayout";
+import LoginFormContainer from "../login/LoginFormContainer";
 
 const ButtonAsClass = toClass(Button);
 
@@ -59,6 +59,8 @@ export default class StickyNavBar extends Component {
 
   close = () => this.setState({ showLoginModal: false });
 
+  onSubmitLogin = () => {};
+
   show = e => {
     e.preventDefault();
     this.setState({ showLoginModal: true });
@@ -87,7 +89,7 @@ export default class StickyNavBar extends Component {
             height: "425px"
           }}
         >
-          <LoginLayout />
+          <LoginFormContainer onSubmit={this.onSubmitLogin} />
         </Modal>
         <Menu
           pointing

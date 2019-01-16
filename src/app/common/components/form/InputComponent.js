@@ -7,6 +7,7 @@ const renderInput = field => (
     label={field.label}
     name={field.input.name}
     value={field.input.value}
+    type={field.type}
     icon={field.icon}
     iconPosition={field.iconPosition}
     onChange={(e, { value }) => field.input.onChange(value)}
