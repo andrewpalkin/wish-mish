@@ -13,6 +13,8 @@ import {
   Modal
 } from "semantic-ui-react";
 import toClass from "recompose/toClass";
+import LoginLayout from "../login/LoginLayout";
+
 const ButtonAsClass = toClass(Button);
 
 const fixedMenuStyle = {
@@ -63,7 +65,11 @@ export default class StickyNavBar extends Component {
   };
 
   render() {
-    const { menuFixed, showLoginModal } = this.state;
+    const {
+      menuFixed,
+      showLoginModal,
+      closeOnDimmerClick = false
+    } = this.state;
 
     return (
       <Visibility
@@ -71,20 +77,17 @@ export default class StickyNavBar extends Component {
         onTopVisible={this.unStickTopMenu}
         once={false}
       >
-        <Modal open={showLoginModal} size="small" onClose={this.close}>
-          <Modal.Header>Login</Modal.Header>
-          <Modal.Content>
-            <p>PLease Login</p>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button negative>No</Button>
-            <Button
-              positive
-              icon="checkmark"
-              labelPosition="right"
-              content="Yes"
-            />
-          </Modal.Actions>
+        <Modal
+          open={showLoginModal}
+          size="small"
+          onClose={this.close}
+          closeOnDimmerClick={closeOnDimmerClick}
+          closeIcon
+          style={{
+            height: "425px"
+          }}
+        >
+          <LoginLayout />
         </Modal>
         <Menu
           pointing
