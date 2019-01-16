@@ -8,8 +8,8 @@ import {
   Segment
 } from "semantic-ui-react";
 
-const LoginForm = () => (
-  <div className="login-form">
+const SignupForm = () => (
+  <div className="signup-form">
     {/*
       Heads up! The styles below are necessary for the correct render of this example.
       You can do same with CSS, the main idea is that all the elements up to the `Grid`
@@ -18,14 +18,14 @@ const LoginForm = () => (
     <style>{`
       body > div,
       body > div > div,
-      body > div > div > div.login-form {
+      body > div > div > div.signup-form {
         height: 100%;
       }
     `}</style>
     <Grid textAlign="center" style={{ height: "100%" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="teal" textAlign="center">
-          Log-in to your account
+          Sign up
         </Header>
         <Form size="large">
           <Segment stacked>
@@ -42,18 +42,31 @@ const LoginForm = () => (
               placeholder="Password"
               type="password"
             />
-
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="First Name"
+              type="firstName"
+            />
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="Last Name"
+              type="lastName"
+            />
             <Button color="teal" fluid size="large">
-              Login
+              Sign up
             </Button>
           </Segment>
         </Form>
         <Message>
-          New to us? <a href="#">Sign Up</a>
+          Already have an account? <a href="#">Log in</a>
         </Message>
       </Grid.Column>
     </Grid>
   </div>
 );
 
-export default LoginForm;
+export default SignupForm;

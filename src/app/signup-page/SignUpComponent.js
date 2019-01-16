@@ -1,17 +1,9 @@
-import _ from "lodash";
-import React, { Component } from "react";
-import {
-  Image,
-  Button,
-  Card,
-  Grid,
-  Icon,
-  Header,
-  Segment,
-  Divider
-} from "semantic-ui-react";
+import React from "react";
+
+import SignupForm from "../common/layout/signup/SignupLayout";
 
 const Signup = props => {
-  return <>"Fuck it"</>;
+  return <SignupForm />;
 };
+
 export default Signup;
