@@ -1,6 +1,6 @@
 import React from "react";
 
-import SignupForm from "../common/layout/signup/SignupLayout";
+import SignupForm from "./SignUpFormComponent";
 
 const Signup = props => {
   return <SignupForm />;

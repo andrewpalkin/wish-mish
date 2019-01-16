@@ -13,7 +13,7 @@ import {
   Icon
 } from "semantic-ui-react";
 
-export default class MyCustomInput extends React.Component {
+export default class ItemQuantityInputComponent extends React.Component {
   render() {
     const {
       input: { value, onChange }

@@ -11,9 +11,9 @@ import {
   Divider
 } from "semantic-ui-react";
 
-import renderDatePicker from "../common/render/RenderDatePicker";
-import renderSelect from "../common/render/RenderSelect";
-import renderTextArea from "../common/render/RenderTextArea";
+import renderDatePicker from "../common/components/form/RenderDatePicker";
+import renderSelect from "../common/components/form/RenderSelect";
+import renderTextArea from "../common/components/form/RenderTextArea";
 
 const required = value => (value ? undefined : "Required");
 
