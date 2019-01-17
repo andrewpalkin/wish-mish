@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import LoginFormComponent from "./LoginFormComponent";
-import { submit, reset } from "redux-form";
+import { authOperations } from "../../../apis/auth-duck-api";
 
 const mapDispatchToProps = dispatch => {
   // 'fetchSubredditJson()' will trigger fetching of JSON data from
@@ -8,6 +8,7 @@ const mapDispatchToProps = dispatch => {
   const login = loginFormData => {
     console.log("loginFormDataContainer-> loginFormData: ", loginFormData);
     //dispatch(submitWishOperations.submitWishOperation(loginFormData));
+    dispatch(authOperations.loginOperation(loginFormData));
     alert("loginFormData successfully");
   };
 
