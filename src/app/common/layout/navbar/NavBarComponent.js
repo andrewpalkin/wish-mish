@@ -72,6 +72,8 @@ export default class StickyNavBar extends Component {
       showLoginModal,
       closeOnDimmerClick = false
     } = this.state;
+    const { loginSuccess } = this.props;
+    console.log("NavBarComponent: LoginSuccess", loginSuccess);
 
     return (
       <Visibility
@@ -80,7 +82,7 @@ export default class StickyNavBar extends Component {
         once={false}
       >
         <Modal
-          open={showLoginModal}
+          open={showLoginModal && !loginSuccess}
           size="small"
           onClose={this.close}
           closeOnDimmerClick={closeOnDimmerClick}

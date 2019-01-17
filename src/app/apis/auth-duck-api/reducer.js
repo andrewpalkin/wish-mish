@@ -1,6 +1,6 @@
 import types from "./types";
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = { loginSuccess: false, loginError: null };
 const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case types.LOGIN_REQUEST: {
@@ -15,7 +15,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
       console.log("LOGIN_SUCCESS: ", loginResponse);
       return {
         ...state,
-        loginResponse,
+        loginSuccess: true,
         showSpinner: false
       };
     }

@@ -16,7 +16,7 @@ const loginOperation = loginData => {
       .auth()
       .signInWithEmailAndPassword(loginData.loginEmail, loginData.loginPassword)
       .then(() => {
-        dispatch(loginSuccess);
+        dispatch(loginSuccess());
         console.log("loginSuccess - : ", loginData);
       })
       .catch(err => {
