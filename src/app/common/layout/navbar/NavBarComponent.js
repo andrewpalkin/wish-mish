@@ -32,6 +32,22 @@ const menuStyle = {
   transition: "box-shadow 0.5s ease, padding 0.5s ease"
 };
 
+const trigger = (
+  <span>
+    <Image
+      avatar
+      src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
+    />{" "}
+    Steve
+  </span>
+);
+
+const options = [
+  { key: "user", text: "Account", icon: "user" },
+  { key: "settings", text: "Settings", icon: "settings" },
+  { key: "sign-out", text: "Sign Out", icon: "sign out" }
+];
+
 export default class StickyNavBar extends Component {
   state = {
     menuFixed: false,
@@ -130,24 +146,14 @@ export default class StickyNavBar extends Component {
             >
               Add Wish
             </ButtonAsClass>
-
-            <Dropdown text="Dropdown" className="link item">
-              <Dropdown.Menu>
-                <Dropdown.Item>List Item</Dropdown.Item>
-                <Dropdown.Item>List Item</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Header>Header Item</Dropdown.Header>
-                <Dropdown.Item>
-                  <i className="dropdown icon" />
-                  <span className="text">Submenu</span>
-                  <Dropdown.Menu>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown.Item>
-                <Dropdown.Item>List Item</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <Menu.Item>
+              <Dropdown
+                trigger={trigger}
+                options={options}
+                pointing="top right"
+                icon={null}
+              />
+            </Menu.Item>
           </Menu.Menu>
         </Menu>
       </Visibility>

@@ -38,9 +38,10 @@ const LoginForm = props => {
           </Header>
           {props.loginFailed ? (
             <Message
+              style={{ textAlign: "left" }}
               error
               header="Login Failed"
-              content="You can only sign up for an account once with a given e-mail address."
+              content="Invalid email or password."
             />
           ) : null}
           <Form size="large" onSubmit={handleSubmit(login)}>

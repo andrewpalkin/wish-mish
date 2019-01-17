@@ -47,14 +47,12 @@ const SignupForm = () => (
               icon="user"
               iconPosition="left"
               placeholder="First Name"
-              type="firstName"
             />
             <Form.Input
               fluid
               icon="user"
               iconPosition="left"
               placeholder="Last Name"
-              type="lastName"
             />
             <Button color="teal" fluid size="large">
               Sign up
