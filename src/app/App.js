@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Image } from "semantic-ui-react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import StickyNavBar from "./common/layout/navbar/NavBarComponent";
+import NavBarContainer from "./common/layout/navbar/NavBarContainer";
 import OnTopNavBar from "./common/layout/navbar/OnTopNavBar";
 import Footer from "./common/layout/footer/Footer";
 import { Container } from "semantic-ui-react";
@@ -15,7 +15,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <OnTopNavBar />
-          <StickyNavBar />
+          <NavBarContainer />
           <Container style={{ marginTop: "120px" }}>
             <Switch>
               <Route exact path="/" component={HomePageContainer} />
