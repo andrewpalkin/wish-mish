@@ -20,7 +20,6 @@ const loginOperation = loginData => {
         console.log("loginSuccess - : ", loginData);
       })
       .catch(err => {
-        console.log("loginFailed - : ", loginData);
         dispatch(loginFailure(err));
       });
   };

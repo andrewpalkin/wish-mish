@@ -36,6 +36,13 @@ const LoginForm = props => {
           <Header as="h2" color="teal" textAlign="center">
             Log-in to your account
           </Header>
+          {props.loginFailed ? (
+            <Message
+              error
+              header="Login Failed"
+              content="You can only sign up for an account once with a given e-mail address."
+            />
+          ) : null}
           <Form size="large" onSubmit={handleSubmit(login)}>
             <Segment stacked>
               <Field

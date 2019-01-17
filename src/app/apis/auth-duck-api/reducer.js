@@ -12,7 +12,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
 
     case types.LOGIN_SUCCESS: {
       const { loginResponse } = action;
-      console.log("login-reducer: ", loginResponse);
+      console.log("LOGIN_SUCCESS: ", loginResponse);
       return {
         ...state,
         loginResponse,
@@ -21,11 +21,10 @@ const authReducer = (state = INITIAL_STATE, action) => {
     }
 
     case types.LOGIN_FAILURE: {
-      const { loginError } = action;
       return {
         ...state,
         showSpinner: false,
-        loginError
+        loginError: "Login Failed"
       };
     }
 
