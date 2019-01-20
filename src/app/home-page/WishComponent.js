@@ -62,35 +62,53 @@ const WishComponent = props => {
             />
           </Grid.Column>
           <Grid.Column width={12}>
-            <Grid.Row>
+            <Grid.Row
+              style={{
+                paddingBottom: "10px"
+              }}
+            >
               <Header as="h1">{props.productName}</Header>
             </Grid.Row>
-            <Divider hidden />
+
             <Grid.Row>
-              <Segment>
+              <Segment secondary>
                 <Grid stackable columns={3}>
                   <Grid.Column
-                    style={{ marginBottom: "25px", marginTop: "0px" }}
+                    style={{
+                      paddingTop: "0px",
+                      paddingBottom: "0px",
+                      verticalAlign: "middle"
+                    }}
                   >
-                    <label
-                      style={{
-                        fontSize: "1em",
-                        color: "rgba(0, 0, 0, 0.4)"
-                      }}
-                    >
-                      Delivered To
-                    </label>
-                    <Header
-                      as="h4"
-                      style={{
-                        display: "inline-block",
-                        marginLeft: "10px"
-                      }}
-                    >
-                      {props.deliveryTo}
-                    </Header>
+                    <Grid.Row>
+                      <label
+                        style={{
+                          fontSize: "1em",
+                          display: "inline-block",
+                          color: "rgba(0, 0, 0, 0.4)"
+                        }}
+                      >
+                        Delivered To
+                      </label>
+                      <Header
+                        as="h4"
+                        style={{
+                          display: "inline-block",
+                          marginLeft: "10px",
+                          marginTop: "10px",
+                          marginBottom: "10px"
+                        }}
+                      >
+                        {props.deliveryTo}
+                      </Header>
+                    </Grid.Row>
                   </Grid.Column>
-                  <Grid.Column>
+                  <Grid.Column
+                    style={{
+                      paddingTop: "0px",
+                      paddingBottom: "0px"
+                    }}
+                  >
                     <label
                       style={{
                         display: "inline-block",
@@ -104,14 +122,21 @@ const WishComponent = props => {
                       as="h4"
                       style={{
                         display: "inline-block",
-                        marginLeft: "10px"
+                        marginLeft: "10px",
+                        marginTop: "10px",
+                        marginBottom: "10px"
                       }}
                     >
                       {props.deliveryFrom}
                     </Header>
                   </Grid.Column>
                   {props.deliveryBeforeDate ? (
-                    <Grid.Column>
+                    <Grid.Column
+                      style={{
+                        paddingTop: "0px",
+                        paddingBottom: "0px"
+                      }}
+                    >
                       <label
                         style={{
                           display: "inline-block",
@@ -125,15 +150,15 @@ const WishComponent = props => {
                         as="h4"
                         style={{
                           display: "inline-block",
-                          marginLeft: "10px"
+                          marginLeft: "10px",
+                          marginTop: "10px",
+                          marginBottom: "10px"
                         }}
                       >
                         {props.deliveryBeforeDate}
                       </Header>
                     </Grid.Column>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                 </Grid>
               </Segment>
             </Grid.Row>
@@ -153,15 +178,14 @@ const WishComponent = props => {
                   as="a"
                   style={{
                     display: "inline-block",
-                    marginLeft: "10px"
+                    marginLeft: "10px",
+                    marginTop: "10px"
                   }}
                 >
                   {props.productURL}
                 </Header>
               </Grid.Row>
-            ) : (
-              ""
-            )}
+            ) : null}
             <Divider />
             {props.reward ? (
               <>
@@ -177,9 +201,7 @@ const WishComponent = props => {
                 </label>
                 <Divider hidden />
               </>
-            ) : (
-              ""
-            )}
+            ) : null}
 
             <Grid>
               <Grid.Column width={8} verticalAlign="middle">
@@ -191,9 +213,7 @@ const WishComponent = props => {
                         .toFixed(2)
                         .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                     </>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                 </Header>
               </Grid.Column>
 
