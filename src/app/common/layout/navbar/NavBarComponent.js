@@ -110,14 +110,13 @@ export default class StickyNavBar extends Component {
           <LoginFormContainer onSubmit={this.onSubmitLogin} />
         </Modal>
         <Menu
-          pointing
           borderless
           fixed={menuFixed ? "top" : undefined}
           style={menuFixed ? fixedMenuStyle : menuStyle}
           inverted
         >
           <Menu.Item>
-            <Icon loading name="certificate" />
+            <Icon loading name="wifi" />
           </Menu.Item>
           <Menu.Item>
             <Header inverted as={NavLink} to="/">
@@ -136,18 +135,19 @@ export default class StickyNavBar extends Component {
             <Menu.Item as={NavLink} to="/signup">
               Sign Up
             </Menu.Item>
-            <ButtonAsClass
-              compact
-              style={{
-                margin: "15px",
-                backgroundColor: "#F89235",
-                color: "white"
-              }}
-              as={NavLink}
-              to="/submit-wish"
-            >
-              Add Wish
-            </ButtonAsClass>
+            <Menu.Item>
+              <ButtonAsClass
+                compact
+                style={{
+                  backgroundColor: "#F89235",
+                  color: "white"
+                }}
+                as={NavLink}
+                to="/submit-wish"
+              >
+                Add Wish
+              </ButtonAsClass>
+            </Menu.Item>
             <Menu.Item>
               <Dropdown
                 trigger={trigger}
