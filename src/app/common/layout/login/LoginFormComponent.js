@@ -10,12 +10,13 @@ import {
 } from "semantic-ui-react";
 import renderInput from "../../../common/components/form/InputComponent";
 import {
-  required,
-  email
+  email,
+  required
 } from "../../../common/utils/validations/FieldLevelValidationForm";
 
 const LoginForm = props => {
   const { handleSubmit, login } = props;
+
   return (
     <div className="login-form">
       {/*
@@ -56,8 +57,7 @@ const LoginForm = props => {
                 icon="mail"
                 placeholder="E-mail address"
                 iconPosition="left"
-                validate={[required, email]}
-                required
+                validate={[required]}
                 fluid
               />
               <Field

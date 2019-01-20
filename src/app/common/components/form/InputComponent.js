@@ -12,11 +12,7 @@ const renderInput = field => (
     iconPosition={field.iconPosition}
     onChange={(e, { value }) => field.input.onChange(value)}
     error={field.meta.touched && field.meta.error ? true : false}
-    placeholder={
-      field.meta.touched && field.meta.error
-        ? "Please fill mandatory field"
-        : field.placeholder
-    }
+    placeholder={field.meta.error ? field.meta.error : field.placeholder}
   />
 );
 
