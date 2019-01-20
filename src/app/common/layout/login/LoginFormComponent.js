@@ -9,6 +9,10 @@ import {
   Segment
 } from "semantic-ui-react";
 import renderInput from "../../../common/components/form/InputComponent";
+import {
+  required,
+  email
+} from "../../../common/utils/validations/FieldLevelValidationForm";
 
 const LoginForm = props => {
   const { handleSubmit, login } = props;
@@ -52,6 +56,8 @@ const LoginForm = props => {
                 icon="mail"
                 placeholder="E-mail address"
                 iconPosition="left"
+                validate={[required, email]}
+                required
                 fluid
               />
               <Field

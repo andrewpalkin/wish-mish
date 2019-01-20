@@ -131,34 +131,38 @@ export default class StickyNavBar extends Component {
           </Menu.Item>
 
           <Menu.Menu position="right">
-            <Menu.Item onClick={this.show}>Login</Menu.Item>
-            <Menu.Item as={NavLink} to="/signup">
-              Sign Up
-            </Menu.Item>
-            <Menu.Item>
-            <ButtonAsClass
-              compact
-              style={{
-                margin: "15px",
-                backgroundColor: "#F89235",
-                color: "white"
-              }}
-              as={NavLink}
-              to="/submit-wish"
-            >
-              Add Wish
-            </ButtonAsClass>
-                  </Menu.Item>
-            {loginSuccess ? (
-              <Menu.Item>
-                <Dropdown
-                  trigger={trigger}
-                  options={options}
-                  pointing="top right"
-                  icon={null}
-                />
-              </Menu.Item>
-            ) : null}
+            {!loginSuccess ? (
+              <>
+                <Menu.Item onClick={this.show}>Login</Menu.Item>
+                <Menu.Item as={NavLink} to="/signup">
+                  Sign Up
+                </Menu.Item>
+              </>
+            ) : (
+              <>
+                <Menu.Item>
+                  <ButtonAsClass
+                    compact
+                    style={{
+                      backgroundColor: "#F89235",
+                      color: "white"
+                    }}
+                    as={NavLink}
+                    to="/submit-wish"
+                  >
+                    Add Wish
+                  </ButtonAsClass>
+                </Menu.Item>
+                <Menu.Item>
+                  <Dropdown
+                    trigger={trigger}
+                    options={options}
+                    pointing="top right"
+                    icon={null}
+                  />
+                </Menu.Item>
+              </>
+            )}
           </Menu.Menu>
         </Menu>
       </Visibility>

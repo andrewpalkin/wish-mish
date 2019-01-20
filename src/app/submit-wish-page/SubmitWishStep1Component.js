@@ -9,14 +9,13 @@ import {
   Divider,
   Icon
 } from "semantic-ui-react";
+import { required } from "../common/utils/validations/FieldLevelValidationForm";
 
 import ItemQuantityComponent from "../common/form-component/ItemQuantityComponent";
 import renderInput from "../common/components/form/InputComponent";
 import renderCheckbox from "../common/components/form/RenderCheckbox";
 import renderSelect from "../common/components/form/RenderSelect";
 import renderTextArea from "../common/components/form/RenderTextArea";
-
-const required = value => (value ? undefined : "Required");
 
 const normalizeDoubleNumber = (value, previousValue) => {
   if (!value) {
