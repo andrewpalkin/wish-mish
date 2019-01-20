@@ -37,7 +37,7 @@ const trigger = (
     <Image
       avatar
       src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
-    />{" "}
+    />
     Steve
   </span>
 );
@@ -136,26 +136,29 @@ export default class StickyNavBar extends Component {
               Sign Up
             </Menu.Item>
             <Menu.Item>
-              <ButtonAsClass
-                compact
-                style={{
-                  backgroundColor: "#F89235",
-                  color: "white"
-                }}
-                as={NavLink}
-                to="/submit-wish"
-              >
-                Add Wish
-              </ButtonAsClass>
-            </Menu.Item>
-            <Menu.Item>
-              <Dropdown
-                trigger={trigger}
-                options={options}
-                pointing="top right"
-                icon={null}
-              />
-            </Menu.Item>
+            <ButtonAsClass
+              compact
+              style={{
+                margin: "15px",
+                backgroundColor: "#F89235",
+                color: "white"
+              }}
+              as={NavLink}
+              to="/submit-wish"
+            >
+              Add Wish
+            </ButtonAsClass>
+                  </Menu.Item>
+            {loginSuccess ? (
+              <Menu.Item>
+                <Dropdown
+                  trigger={trigger}
+                  options={options}
+                  pointing="top right"
+                  icon={null}
+                />
+              </Menu.Item>
+            ) : null}
           </Menu.Menu>
         </Menu>
       </Visibility>
