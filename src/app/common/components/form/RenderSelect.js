@@ -9,7 +9,6 @@ const renderSelect = field => (
     options={field.options}
     placeholder={field.placeholder}
     value={field.input.value}
-    required={field.required}
     error={field.meta.touched && field.meta.error ? true : false}
   />
 );

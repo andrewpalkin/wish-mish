@@ -11,7 +11,6 @@ const renderTextArea = field => (
           ? "Please fill mandatory field"
           : field.placeholder
       }
-      required={field.required}
       error={field.meta.touched && field.meta.error ? true : false}
     />
 

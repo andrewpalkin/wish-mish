@@ -45,7 +45,6 @@ const SubmitWishStep1Component = props => {
               name="productName"
               placeholder="Product name that you wish..."
               validate={required}
-              required
             />
             <Field
               component={renderTextArea}
@@ -53,7 +52,6 @@ const SubmitWishStep1Component = props => {
               name="productInformation"
               placeholder="Tell us more about you product that you wish.."
               validate={required}
-              required
             />
             <Field
               component={Form.Input}
@@ -96,7 +94,6 @@ const SubmitWishStep1Component = props => {
                 ]}
                 placeholder="Small (Medium, Big)"
                 validate={required}
-                required
               />
               <Field
                 component={renderInput}
@@ -105,7 +102,6 @@ const SubmitWishStep1Component = props => {
                 iconPosition="left"
                 placeholder="Enter weight... (kg)"
                 validate={required}
-                required
               />
             </Form.Group>
             <Form.Group>
@@ -131,7 +127,6 @@ const SubmitWishStep1Component = props => {
               iconPosition="left"
               placeholder="Enter the item price"
               validate={required}
-              required
               normalize={normalizeDoubleNumber}
             />
             <Divider hidden />
@@ -139,7 +134,6 @@ const SubmitWishStep1Component = props => {
               component={ItemQuantityComponent}
               name="quantity"
               value={1}
-              required
             />
           </Form>
         </Segment>

@@ -57,7 +57,7 @@ const LoginForm = props => {
                 icon="mail"
                 placeholder="E-mail address"
                 iconPosition="left"
-                validate={[required]}
+                validate={[required, email]}
                 fluid
               />
               <Field
