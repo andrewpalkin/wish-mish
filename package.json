@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "2.2.6",
     "firebase": "latest",
     "lodash": "4.17.11",
     "react": "16.7.0",
