@@ -1,24 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Dropdown, Image, Menu, Button } from "semantic-ui-react";
+import { Dropdown, Image, Menu, Button, Label } from "semantic-ui-react";
 import toClass from "recompose/toClass";
 
 const ButtonAsClass = toClass(Button);
 
-const trigger = (
+const trigger = userDetails => (
   <span>
-    <Image
-      avatar
-      src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
-    />
-    Steve
+    {false ? (
+      <Image
+        avatar
+        src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
+      />
+    ) : (
+      <Label size="large" color="pink" circular style={{ marginRight: "4px" }}>
+        {userDetails.initials}
+      </Label>
+    )}
+    {userDetails.userName}
   </span>
 );
 
 const options = [
-  { key: "user", text: "Account", icon: "user" },
-  { key: "settings", text: "Settings", icon: "settings" },
-  { key: "sign-out", text: "Sign Out", icon: "sign out" }
+  { key: "user", text: "Account", icon: "user", value: "user" },
+  { key: "settings", text: "Settings", icon: "settings", value: "settings" },
+  { key: "sign-out", text: "Sign Out", icon: "sign out", value: "signout" }
 ];
 
 const NavBarLoginSignUpButtons = props => {
@@ -44,10 +50,14 @@ const NavBarLoginSignUpButtons = props => {
       </Menu.Item>
       <Menu.Item>
         <Dropdown
-          trigger={trigger}
+          trigger={trigger({
+            userName: props.userName,
+            initials: props.initials
+          })}
           options={options}
           pointing="top right"
           icon={null}
+          onChange={props.handleDropdownChange}
         />
       </Menu.Item>
     </>

@@ -7,7 +7,7 @@ import Footer from "./common/layout/footer/Footer";
 import { Container } from "semantic-ui-react";
 import HomePageContainer from "./home-page/HomeContainer";
 import SubmitWishMainContainer from "./submit-wish-page/SubmitWishMainContainer";
-import SignUpMainComponent from "./signup-page/SignUpMainComponent";
+import SignUpMainContainer from "./signup-page/SignUpMainContainer";
 import AboutComponent from "./common/about/AboutComponent";
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
                 path="/submit-wish"
                 component={SubmitWishMainContainer}
               />
-              <Route exact path="/signup" component={SignUpMainComponent} />
+              <Route exact path="/signup" component={SignUpMainContainer} />
               <Route exact path="/about" component={AboutComponent} />
               <Redirect to="/app" />
             </Switch>

@@ -41,7 +41,7 @@ const LoginForm = props => {
           <Header as="h2" color="teal" textAlign="center">
             Log-in to your account
           </Header>
-          {props.loginFailed ? (
+          {props.loginError ? (
             <Message
               style={{ textAlign: "left" }}
               error

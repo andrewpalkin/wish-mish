@@ -4,20 +4,28 @@ import { authOperations } from "../../../apis/auth-duck-api";
 
 const mapStateToProps = state => {
   return {
-    loginFailed: state.auth.loginError,
-    loginSuccess: state.auth.loginSuccess
+    auth: state.firebase.auth,
+    userName: state.firebase.profile.firstName,
+    initials: state.firebase.profile.initials
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  const methodeName = inputData => {
-    console.log("loginFormDataContainer-> loginFormData: ", inputData);
+  const signout = () => {
+    console.log("signoutContainer-> signout: ");
     //dispatch(submitWishOperations.submitWishOperation(loginFormData));
-    //dispatch(authOperations.loginOperation(loginFormData));
+    dispatch(authOperations.signoutOperation());
+  };
+
+  const cleanLoginError = () => {
+    console.log("cleanLoginError-> loginFormData: ");
+    //dispatch(submitWishOperations.submitWishOperation(loginFormData));
+    dispatch(authOperations.cleanLoginErrorOperation());
   };
 
   return {
-    methodeName
+    signout,
+    cleanLoginError
   };
 };
 

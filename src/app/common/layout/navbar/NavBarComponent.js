@@ -34,7 +34,10 @@ export default class StickyNavBar extends Component {
 
   unStickTopMenu = () => this.setState({ menuFixed: false });
 
-  close = () => this.setState({ showLoginModal: false });
+  close = () => {
+    this.props.cleanLoginError();
+    this.setState({ showLoginModal: false });
+  };
 
   onSubmitLogin = () => {};
 
@@ -53,6 +56,11 @@ export default class StickyNavBar extends Component {
     }
   };
 
+  handleDropdownChange = (e, { name, value }) => {
+    console.log("handleDropdownChange name: ", name + "  value:" + value);
+    if (value === "signout") this.props.signout();
+  };
+
   render() {
     const {
       showLoginModal,
@@ -60,7 +68,7 @@ export default class StickyNavBar extends Component {
       activeItem,
       menuFixed
     } = this.state;
-    const { loginSuccess } = this.props;
+    const { auth } = this.props;
     console.log("activeItem : ", activeItem);
 
     return (
@@ -69,30 +77,36 @@ export default class StickyNavBar extends Component {
         onTopVisible={this.unStickTopMenu}
         once={false}
       >
-        <Modal
-          open={showLoginModal && !loginSuccess}
-          size="small"
-          onClose={this.close}
-          closeOnDimmerClick={closeOnDimmerClick}
-          closeIcon
-          style={{
-            height: "425px"
-          }}
-        >
-          <LoginFormContainer
-            onSubmit={this.onSubmitLogin}
-            activeItem={activeItem}
-          />
-        </Modal>
+        {!auth.uid ? (
+          <Modal
+            open={showLoginModal}
+            size="small"
+            onClose={this.close}
+            closeOnDimmerClick={closeOnDimmerClick}
+            closeIcon
+            onUnmount={this.close}
+            style={{
+              height: "425px"
+            }}
+          >
+            <LoginFormContainer
+              onSubmit={this.onSubmitLogin}
+              activeItem={activeItem}
+            />
+          </Modal>
+        ) : null}
         <NavBarMenu
           menuFixed={menuFixed}
           handleItemClick={this.handleItemClick}
           activeItem={activeItem}
         >
-          {loginSuccess ? (
+          {auth.uid ? (
             <NavBarAddWishSignOutButtons
               handleItemClick={this.handleItemClick}
               activeItem={activeItem}
+              handleDropdownChange={this.handleDropdownChange}
+              userName={this.props.userName}
+              initials={this.props.initials}
             />
           ) : (
             <NavBarLoginSignUpButtons

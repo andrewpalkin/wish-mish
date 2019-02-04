@@ -24,7 +24,64 @@ const authReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         showSpinner: false,
-        loginError: "Login Failed"
+        loginError: true
+      };
+    }
+
+    case types.CLEAN_LOGIN_ERROR: {
+      return {
+        ...state,
+        loginError: false
+      };
+    }
+
+    case types.SIGNUP_REQUEST: {
+      return {
+        ...state,
+        showSpinner: true
+      };
+    }
+
+    case types.SIGNUP_SUCCESS: {
+      const { signupResponse } = action;
+      console.log("SIGNUP_SUCCESS: ", signupResponse);
+      return {
+        ...state,
+        signupSuccess: true,
+        showSpinner: false
+      };
+    }
+
+    case types.SIGNUP_FAILURE: {
+      return {
+        ...state,
+        showSpinner: false,
+        signupError: "SIGNUP Failed"
+      };
+    }
+
+    case types.SIGNOUT_REQUEST: {
+      return {
+        ...state,
+        showSpinner: true
+      };
+    }
+
+    case types.SIGNOUT_SUCCESS: {
+      const { signupResponse } = action;
+      console.log("SIGNOUT_SUCCESS: ", signupResponse);
+      return {
+        ...state,
+        signupSuccess: true,
+        showSpinner: false
+      };
+    }
+
+    case types.SIGNOUT_FAILURE: {
+      return {
+        ...state,
+        showSpinner: false,
+        signupError: "SIGNOUT_FAILURE"
       };
     }
 

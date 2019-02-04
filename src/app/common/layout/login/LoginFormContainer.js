@@ -4,7 +4,7 @@ import { authOperations } from "../../../apis/auth-duck-api";
 
 const mapStateToProps = state => {
   return {
-    loginFailed: state.auth.loginError
+    loginError: state.auth.loginError
   };
 };
 
