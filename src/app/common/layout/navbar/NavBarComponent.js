@@ -1,58 +1,19 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import {
-  Container,
-  Dropdown,
-  Image,
-  Menu,
-  Visibility,
-  Button,
-  Icon,
-  Header,
-  Modal
-} from "semantic-ui-react";
-import toClass from "recompose/toClass";
+import { Visibility, Modal } from "semantic-ui-react";
+
+import NavBarMenu from "../../components/navbar/NavBarMenu";
+import NavBarLoginSignUpButtons from "../../components/navbar/NavBarLoginSignUpButtons";
+import NavBarAddWishSignOutButtons from "../../components/navbar/NavBarAddWishSignOutButtons.js";
+
 import LoginFormContainer from "../login/LoginFormContainer";
-
-const ButtonAsClass = toClass(Button);
-
-const fixedMenuStyle = {
-  border: "1px solid #ddd",
-  boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
-  padding: "5px"
-};
-
-const menuStyle = {
-  border: "none",
-  borderRadius: 0,
-  boxShadow: "none",
-  marginBottom: "1em",
-  marginTop: "0em",
-  transition: "box-shadow 0.5s ease, padding 0.5s ease"
-};
-
-const trigger = (
-  <span>
-    <Image
-      avatar
-      src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
-    />
-    Steve
-  </span>
-);
-
-const options = [
-  { key: "user", text: "Account", icon: "user" },
-  { key: "settings", text: "Settings", icon: "settings" },
-  { key: "sign-out", text: "Sign Out", icon: "sign out" }
-];
 
 export default class StickyNavBar extends Component {
   state = {
     menuFixed: false,
     overlayFixed: false,
-    showLoginModal: false
+    showLoginModal: false,
+    activeItem: "app"
   };
 
   handleOverlayRef = c => {
@@ -82,14 +43,25 @@ export default class StickyNavBar extends Component {
     this.setState({ showLoginModal: true });
   };
 
+  handleItemClick = (e, { name }) => {
+    if (name === "logo") {
+      this.setState({ activeItem: "app" });
+    } else if (name === "login") {
+      this.show(e);
+    } else {
+      this.setState({ activeItem: name });
+    }
+  };
+
   render() {
     const {
-      menuFixed,
       showLoginModal,
-      closeOnDimmerClick = false
+      closeOnDimmerClick = false,
+      activeItem,
+      menuFixed
     } = this.state;
     const { loginSuccess } = this.props;
-    console.log("NavBarComponent: LoginSuccess", loginSuccess);
+    console.log("activeItem : ", activeItem);
 
     return (
       <Visibility
@@ -107,64 +79,28 @@ export default class StickyNavBar extends Component {
             height: "425px"
           }}
         >
-          <LoginFormContainer onSubmit={this.onSubmitLogin} />
+          <LoginFormContainer
+            onSubmit={this.onSubmitLogin}
+            activeItem={activeItem}
+          />
         </Modal>
-        <Menu
-          borderless
-          fixed={menuFixed ? "top" : undefined}
-          style={menuFixed ? fixedMenuStyle : menuStyle}
-          inverted
+        <NavBarMenu
+          menuFixed={menuFixed}
+          handleItemClick={this.handleItemClick}
+          activeItem={activeItem}
         >
-          <Menu.Item>
-            <Icon loading name="wifi" />
-          </Menu.Item>
-          <Menu.Item>
-            <Header inverted as={NavLink} to="/">
-              WISH MISH
-            </Header>
-          </Menu.Item>
-          <Menu.Item as={NavLink} name="home" exact to="/">
-            Home
-          </Menu.Item>
-          <Menu.Item as={NavLink} to="/about">
-            About
-          </Menu.Item>
-
-          <Menu.Menu position="right">
-            {!loginSuccess ? (
-              <>
-                <Menu.Item onClick={this.show}>Login</Menu.Item>
-                <Menu.Item as={NavLink} to="/signup">
-                  Sign Up
-                </Menu.Item>
-              </>
-            ) : (
-              <>
-                <Menu.Item>
-                  <ButtonAsClass
-                    compact
-                    style={{
-                      backgroundColor: "#F89235",
-                      color: "white"
-                    }}
-                    as={NavLink}
-                    to="/submit-wish"
-                  >
-                    Add Wish
-                  </ButtonAsClass>
-                </Menu.Item>
-                <Menu.Item>
-                  <Dropdown
-                    trigger={trigger}
-                    options={options}
-                    pointing="top right"
-                    icon={null}
-                  />
-                </Menu.Item>
-              </>
-            )}
-          </Menu.Menu>
-        </Menu>
+          {loginSuccess ? (
+            <NavBarAddWishSignOutButtons
+              handleItemClick={this.handleItemClick}
+              activeItem={activeItem}
+            />
+          ) : (
+            <NavBarLoginSignUpButtons
+              handleItemClick={this.handleItemClick}
+              activeItem={activeItem}
+            />
+          )}
+        </NavBarMenu>
       </Visibility>
     );
   }
