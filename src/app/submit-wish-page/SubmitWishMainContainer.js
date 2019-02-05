@@ -16,7 +16,10 @@ const mapStateToProps = state => {
   return state.form.wishDetailsStep1Form
     ? {
         formDataStep1,
-        formDataStep2
+        formDataStep2,
+        userId: state.firebase.auth.uid,
+        initials: state.firebase.profile.initials,
+        firstName: state.firebase.profile.firstName
       }
     : {};
 };

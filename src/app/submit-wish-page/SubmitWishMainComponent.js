@@ -108,6 +108,9 @@ export default class SubmitWishMainComponent extends Component {
             formDataStep1={formDataStep1}
             formDataStep2={formDataStep2}
             publishWish={this.props.publishWish}
+            userId={this.props.userId}
+            firstName={this.props.firstName}
+            initials={this.props.initials}
           />
         ) : null}
       </>

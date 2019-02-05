@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import WishComponent from "./WishComponent";
+import { Link } from "react-router-dom";
 import {
   Image,
   Button,
@@ -18,7 +19,11 @@ export default class HomePage extends Component {
       <>
         {this.props.wishes &&
           this.props.wishes.map(wish => {
-            return <WishComponent {...wish} />;
+            return (
+              <Link to={"/wish/" + wish.id}>
+                <WishComponent {...wish} key={wish.id} />
+              </Link>
+            );
           })}
       </>
     );

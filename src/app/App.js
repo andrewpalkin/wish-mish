@@ -9,6 +9,7 @@ import HomePageContainer from "./home-page/HomeContainer";
 import SubmitWishMainContainer from "./submit-wish-page/SubmitWishMainContainer";
 import SignUpMainContainer from "./signup-page/SignUpMainContainer";
 import AboutComponent from "./common/about/AboutComponent";
+import WishDetailsMainContainer from "./wish-details-page/WishDetailsMainContainer";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
               />
               <Route exact path="/signup" component={SignUpMainContainer} />
               <Route exact path="/about" component={AboutComponent} />
+              <Route path="/wish/:id" component={WishDetailsMainContainer} />
               <Redirect to="/app" />
             </Switch>
           </Container>

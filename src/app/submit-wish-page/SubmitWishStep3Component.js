@@ -98,7 +98,11 @@ const SubmitWishStep3Component = props => {
             onClick={() =>
               props.publishWish({
                 ...props.formDataStep1,
-                ...props.formDataStep2
+                ...props.formDataStep2,
+                userId: props.userId,
+                initials: props.initials,
+                firstName: props.firstName,
+                publishedDate: new Date()
               })
             }
           >

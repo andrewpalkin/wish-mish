@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
+import dateDiff from "../common/utils/dates/dateDiff";
 import {
   Image,
   Button,
@@ -8,9 +9,11 @@ import {
   Icon,
   Header,
   Segment,
-  Divider
+  Divider,
+  Label
 } from "semantic-ui-react";
 
+const currentDate = new Date();
 const WishComponent = props => {
   console.log(" fromWishComponent FireStore data ", props);
   console.log("Reward = ", props.reward ? "true" : "false");
@@ -19,11 +22,22 @@ const WishComponent = props => {
       <Card.Content>
         <Grid>
           <Grid.Column width={1} verticalAlign="middle">
-            <Image
-              circular
-              size="tiny"
-              src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
-            />
+            {props.imageURL ? (
+              <Image
+                circular
+                size="tiny"
+                src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
+              />
+            ) : (
+              <Label
+                size="large"
+                color="pink"
+                circular
+                style={{ marginRight: "4px" }}
+              >
+                {props.initials}
+              </Label>
+            )}
           </Grid.Column>
           <Grid.Column width={7} verticalAlign="middle">
             <label
@@ -34,7 +48,7 @@ const WishComponent = props => {
                 lineHeight: "1.28571429em"
               }}
             >
-              Steve
+              {props.firstName}
             </label>
           </Grid.Column>
           <Grid.Column width={8} align="right" verticalAlign="middle">
@@ -45,7 +59,8 @@ const WishComponent = props => {
                 color: "rgba(0, 0, 0, 0.4)"
               }}
             >
-              40 minutes ago
+              {dateDiff(props.publishedDate, currentDate)}
+              ago
             </label>
           </Grid.Column>
         </Grid>
