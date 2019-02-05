@@ -18,7 +18,7 @@ class App extends Component {
         <div>
           {/* <OnTopNavBar /> */}
           <NavBarContainer />
-          <Container>
+          <Container style={{ marginTop: "100px", minHeight: "85vh" }}>
             <Switch>
               <Route exact path="/app" component={HomePageContainer} />
               <Route

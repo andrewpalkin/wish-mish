@@ -22,6 +22,7 @@ export default class HomePage extends Component {
             return (
               <Link to={"/wish/" + wish.id}>
                 <WishComponent {...wish} key={wish.id} />
+                <Divider hidden />
               </Link>
             );
           })}

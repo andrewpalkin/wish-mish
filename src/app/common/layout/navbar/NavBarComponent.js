@@ -26,14 +26,6 @@ export default class StickyNavBar extends Component {
     }
   };
 
-  stickOverlay = () => this.setState({ overlayFixed: true });
-
-  stickTopMenu = () => this.setState({ menuFixed: true });
-
-  unStickOverlay = () => this.setState({ overlayFixed: false });
-
-  unStickTopMenu = () => this.setState({ menuFixed: false });
-
   close = () => {
     this.props.cleanLoginError();
     this.setState({ showLoginModal: false });
@@ -72,11 +64,7 @@ export default class StickyNavBar extends Component {
     console.log("activeItem : ", activeItem);
 
     return (
-      <Visibility
-        onTopPassed={this.stickTopMenu}
-        onTopVisible={this.unStickTopMenu}
-        once={false}
-      >
+      <>
         {!auth.uid ? (
           <Modal
             open={showLoginModal}
@@ -115,7 +103,7 @@ export default class StickyNavBar extends Component {
             />
           )}
         </NavBarMenu>
-      </Visibility>
+      </>
     );
   }
 }

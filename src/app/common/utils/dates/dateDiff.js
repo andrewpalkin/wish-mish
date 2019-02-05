@@ -8,7 +8,7 @@ const dateDiff = (dateA, dateB) => {
   ];
   const result = (dateB.getTime() - publishedDate.getTime()) / 1000;
   const unit = units.find(unit => result >= unit.size);
-  return Math.floor(result / unit.size) + unit.name;
+  if (result && unit) return Math.floor(result / unit.size) + unit.name;
 };
 
 export default dateDiff;
