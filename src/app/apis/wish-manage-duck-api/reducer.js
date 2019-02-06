@@ -6,7 +6,7 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
     case types.SUBMIT_WISH_REQUEST: {
       return {
         ...state,
-        showSpinner: true
+        submitWishShowSpinner: true
       };
     }
 
@@ -15,8 +15,8 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
       console.log("submit-reducer: ", submitWishResponse);
       return {
         ...state,
-        submitWishResponse,
-        showSpinner: false
+        submitWishSucced: true,
+        submitWishShowSpinner: false
       };
     }
 
@@ -24,8 +24,8 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
       const { submitWishError } = action;
       return {
         ...state,
-        showSpinner: false,
-        submitWishError
+        submitWishShowSpinner: false,
+        submitWishSucced: false
       };
     }
 

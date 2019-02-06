@@ -27,29 +27,120 @@ class WishDetailsMainComponent extends Component {
         {wishDetails ? (
           <>
             <Divider hidden />
-            <Grid stackable columns={2}>
-              <Grid.Column>
-                <Segment>
-                  <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-                </Segment>
-              </Grid.Column>
-              <Grid.Column>
-                <Segment>
-                  <Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-                </Segment>
-              </Grid.Column>
+            <Grid stackable>
+              <Grid.Row>
+                <Grid.Column width={8} floated="right">
+                  <div className="ui card fluid" style={{ height: "100%" }}>
+                    <div class="image" fluid>
+                      <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
+                    </div>
+                    <div class="content centered">
+                      <a centered class="header">
+                        {wishDetails.productName}
+                      </a>
+                    </div>
+                  </div>
+                </Grid.Column>
+                <Grid.Column width={4}>
+                  <div class="ui card fluid">
+                    <div class="content">
+                      <div class="center aligned  author">
+                        <img
+                          class="ui avatar image big"
+                          src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"
+                        />
+                      </div>
+                      <br />
+
+                      <div class="center aligned header">
+                        {wishDetails.firstName}
+                      </div>
+                      <Divider hidden />
+                      <div class="meta">
+                        <span class="right floated time">2 days ago</span>
+                        <span class="category">Requested</span>
+                      </div>
+                      <Divider />
+                      <div>
+                        <span class="right floated time">
+                          <strong>{wishDetails.itemPrice}$</strong>
+                        </span>
+                        <span class="category meta">Price for 1 item</span>
+                      </div>
+                      <div>
+                        <span class="right floated time">
+                          <strong>{wishDetails.reward}$</strong>
+                        </span>
+                        <span class="category meta">Reward for one item</span>
+                      </div>
+
+                      <Divider hidden />
+                      <Button primary fluid>
+                        Make your offer
+                      </Button>
+                      <Divider />
+                      <div>
+                        <span class="right floated time">
+                          <strong>{wishDetails.deliveryTo}</strong>
+                        </span>
+                        <span class="category meta">
+                          <i class="share icon" />
+                          Delivery to
+                        </span>
+                      </div>
+                      <div>
+                        <span class="right floated time">
+                          <strong>{wishDetails.deliveryFrom}</strong>
+                        </span>
+                        <span class="category meta">
+                          <i class="reply icon" />
+                          From
+                        </span>
+                      </div>
+                      <div>
+                        <span class="right floated time">
+                          <strong>{wishDetails.productURL}</strong>
+                        </span>
+                        <span class="category meta">
+                          <i class="map pin  icon" />
+                          Where to buy
+                        </span>
+                      </div>
+                      <div>
+                        <span class="right floated time">
+                          <strong>{wishDetails.quantity}</strong>
+                        </span>
+                        <span class="category meta">
+                          <i class="database icon" />
+                          Quantity
+                        </span>
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <a>
+                        <i class="comments outline icon" />2 Offers
+                      </a>
+                    </div>
+                  </div>
+                </Grid.Column>
+              </Grid.Row>
             </Grid>
-            <Grid centered columns={2}>
-              <Grid.Column>
+            <Grid centered textAlign="center">
+              <Grid.Row>
+                <div>
+                  <br />
+                  <br />
+                  <span class="right floated time">
+                    <strong>DELIVERY OFFERS</strong>
+                  </span>
+                </div>
+              </Grid.Row>
+            </Grid>
+            <Grid centered>
+              <Grid.Column width={8}>
                 <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
               </Grid.Column>
             </Grid>
-            <div>
-              <div>Wisher name: {wishDetails.firstName}</div>
-              <div>Item price: {wishDetails.itemPrice}</div>
-              <div>Product Name: {wishDetails.productName}</div>
-              <div>Reward: {wishDetails.reward}</div>
-            </div>
           </>
         ) : (
           <Dimmer inverted active>

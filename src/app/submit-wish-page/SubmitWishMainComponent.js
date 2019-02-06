@@ -111,6 +111,9 @@ export default class SubmitWishMainComponent extends Component {
             userId={this.props.userId}
             firstName={this.props.firstName}
             initials={this.props.initials}
+            submitWishShowSpinner={this.props.submitWishShowSpinner}
+            submitWishSucced={this.props.submitWishSucced}
+            history={this.props.history}
           />
         ) : null}
       </>

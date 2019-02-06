@@ -19,7 +19,9 @@ const mapStateToProps = state => {
         formDataStep2,
         userId: state.firebase.auth.uid,
         initials: state.firebase.profile.initials,
-        firstName: state.firebase.profile.firstName
+        firstName: state.firebase.profile.firstName,
+        submitWishShowSpinner: state.submitWish.submitWishShowSpinner,
+        submitWishSucced: state.submitWish.submitWishSucced
       }
     : {};
 };
@@ -38,7 +40,6 @@ const mapDispatchToProps = dispatch => {
   const publishWish = submitWishData => {
     console.log("submitWishContainer-> submitWishData: ", submitWishData);
     dispatch(submitWishOperations.submitWishOperation(submitWishData));
-    alert("Wish was published successfully");
   };
 
   return {
