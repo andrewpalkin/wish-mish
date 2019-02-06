@@ -19,8 +19,10 @@ const devtoolMiddleware = ext && ext();
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    applyMiddleware(logger),
+    applyMiddleware(
+      thunk.withExtraArgument({ getFirebase, getFirestore }),
+      logger
+    ),
     reduxFirestore(fbConfig),
     reactReduxFirebase(fbConfig, {
       useFirestoreForProfile: true,
