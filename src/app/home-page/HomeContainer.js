@@ -19,7 +19,9 @@ const HomeContainer = compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  firestoreConnect([{ collection: "wishes" }])
+  firestoreConnect([
+    { collection: "wishes", orderBy: [["publishedDate", "desc"]] }
+  ])
 )(HomeComponent);
 
 export default HomeContainer;
