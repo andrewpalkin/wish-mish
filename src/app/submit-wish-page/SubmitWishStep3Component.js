@@ -95,6 +95,8 @@ const SubmitWishStep3Component = props => {
           <Button
             primary
             fluid
+            loading={props.submitWishShowSpinner}
+            disabled={props.submitWishShowSpinner}
             onClick={() =>
               props.publishWish({
                 ...props.formDataStep1,
@@ -102,7 +104,8 @@ const SubmitWishStep3Component = props => {
                 userId: props.userId,
                 initials: props.initials,
                 firstName: props.firstName,
-                publishedDate: new Date()
+                publishedDate: new Date(),
+                history: props.history
               })
             }
           >

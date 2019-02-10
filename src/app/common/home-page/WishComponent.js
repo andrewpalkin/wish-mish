@@ -1,6 +1,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import dateDiff from "../common/utils/dates/dateDiff";
+import dateDiff from "../utils/dates/dateDiff";
 import {
   Image,
   Button,
@@ -13,8 +13,9 @@ import {
   Label
 } from "semantic-ui-react";
 
-const currentDate = new Date();
 const WishComponent = props => {
+  const { diffDate } = props;
+
   console.log(" fromWishComponent FireStore data ", props);
   console.log("Reward = ", props.reward ? "true" : "false");
   return (
@@ -59,8 +60,7 @@ const WishComponent = props => {
                 color: "rgba(0, 0, 0, 0.4)"
               }}
             >
-              {dateDiff(props.publishedDate, currentDate)}
-              ago
+              {diffDate ? `${diffDate} ago` : null}
             </label>
           </Grid.Column>
         </Grid>
