@@ -13,7 +13,8 @@ import {
   Grid,
   Dimmer,
   Loader,
-  Divider
+  Divider,
+  Rating
 } from "semantic-ui-react";
 
 class WishDetailsMainComponent extends Component {
@@ -136,9 +137,93 @@ class WishDetailsMainComponent extends Component {
                 </div>
               </Grid.Row>
             </Grid>
-            <Grid centered>
+            <Grid stackable centered>
               <Grid.Column width={8}>
-                <Image src="https://react.semantic-ui.com/images/wireframe/image.png" />
+                <div class="ui card fluid">
+                  <div class="content">
+                    <div class="right floated meta">14h ago</div>
+                    <img
+                      class="ui avatar large image"
+                      src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
+                    />{" "}
+                    Elliot
+                    <div>
+                      <Rating maxRating={5} disabled defaultRating={3} />
+                    </div>
+                  </div>
+                  <div class="content">
+                    <div>
+                      <span class="right floated time">
+                        <strong>{"12-12-12"}</strong>
+                      </span>
+                      <span class="category meta">
+                        <i class="calendar outline icon" />
+                        Delivery date
+                      </span>
+                    </div>
+                    <div>
+                      <span class="right floated time">
+                        <strong>{wishDetails.deliveryFrom}</strong>
+                      </span>
+                      <span class="category meta">
+                        <i class="reply icon" />
+                        Delivery from
+                      </span>
+                    </div>
+                  </div>
+                  <div class=" content">
+                    <div class="ui large  left icon ">
+                      <span class="category ">Traveler reward</span>
+                      <span class="right floated time">
+                        <i class="dollar icon" />
+                        <strong>{wishDetails.reward}</strong>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="ui card fluid">
+                  <div class="content">
+                    <div class="right floated meta">14h ago</div>
+                    <img
+                      class="ui avatar image"
+                      src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
+                    />{" "}
+                    Elliot
+                    <div>
+                      <Rating maxRating={5} disabled defaultRating={3} />
+                    </div>
+                  </div>
+                  <div class="content">
+                    <div>
+                      <span class="right floated time">
+                        <strong>{"12-12-12"}</strong>
+                      </span>
+                      <span class="category meta">
+                        <i class="reply icon" />
+                        Delivery date
+                      </span>
+                    </div>
+                    <div>
+                      <span class="right floated time">
+                        <strong>{wishDetails.deliveryFrom}</strong>
+                      </span>
+                      <span class="category meta">
+                        <i class="reply icon" />
+                        Delivery from
+                      </span>
+                    </div>
+                  </div>
+                  <div class=" content">
+                    <div class="ui large  left icon ">
+                      <span class="category ">Traveler reward</span>
+                      <span class="right floated time">
+                        <i class="dollar icon" />
+                        <strong>{wishDetails.reward}</strong>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </Grid.Column>
             </Grid>
           </>
