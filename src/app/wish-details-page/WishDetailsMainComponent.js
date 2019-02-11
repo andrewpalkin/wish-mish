@@ -213,6 +213,24 @@ class WishDetailsMainComponent extends Component {
                         Delivery from
                       </span>
                     </div>
+                    <div>
+                      <span class="right floated time">
+                        <strong>{wishDetails.itemPrice}</strong>
+                      </span>
+                      <span class="category meta">
+                        <i class="reply icon" />
+                        Item price
+                      </span>
+                    </div>
+                    <div>
+                      <span class="right floated time">
+                        <strong>{wishDetails.quantity}</strong>
+                      </span>
+                      <span class="category meta">
+                        <i class="reply icon" />
+                        Item quantity
+                      </span>
+                    </div>
                   </div>
                   <div class=" content">
                     <div class="ui large  left icon ">
