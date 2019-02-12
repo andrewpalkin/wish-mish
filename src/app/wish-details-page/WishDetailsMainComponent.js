@@ -14,17 +14,44 @@ import {
   Dimmer,
   Loader,
   Divider,
-  Rating
+  Rating,
+  Rail,
+  Sticky,
+  Modal,
+  Form
 } from "semantic-ui-react";
+import { Field, reduxForm } from "redux-form";
+
+import renderDatePicker from "../common/components/form/RenderDatePicker";
+import WishDetailsCardComponent from "./WishDetailsCardComponent";
+import DeliveryOfferComponent from "./DeliveryOfferComponent";
+
+import ItemQuantityComponent from "../common/form-component/ItemQuantityComponent";
 
 class WishDetailsMainComponent extends Component {
-  state = {};
+  state = { active: true, makeYouOfferModalStatus: false };
+  handleContextRef = contextRef => this.setState({ contextRef });
+
+  required = value => (value ? undefined : "Required");
+  openMakeYouOfferModalStatus = () => {
+    this.setState({ makeYouOfferModalStatus: true });
+  };
+
+  closeMakeYouOfferModal = () => {
+    console.log("SSSS");
+    this.props.clearSubmitWishOfferDataOperation();
+    this.setState({ makeYouOfferModalStatus: false });
+  };
   render() {
     const wishId = this.props.match.params.id;
     const wishDetails = this.props.wishDetails;
+    const offers = this.props.offers;
+    const { active, contextRef } = this.state;
     console.log("Wish details is: ", wishDetails);
+    console.log("Offers from DB: ", this.props.offers);
+    const { handleSubmit } = this.props;
     return (
-      <div>
+      <div ref={this.handleContextRef}>
         {wishDetails ? (
           <>
             <Divider hidden />
@@ -42,87 +69,16 @@ class WishDetailsMainComponent extends Component {
                     </div>
                   </div>
                 </Grid.Column>
+
                 <Grid.Column width={4}>
-                  <div class="ui card fluid">
-                    <div class="content">
-                      <div class="center aligned  author">
-                        <img
-                          class="ui avatar image big"
-                          src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"
-                        />
-                      </div>
-                      <br />
-
-                      <div class="center aligned header">
-                        {wishDetails.firstName}
-                      </div>
-                      <Divider hidden />
-                      <div class="meta">
-                        <span class="right floated time">2 days ago</span>
-                        <span class="category">Requested</span>
-                      </div>
-                      <Divider />
-                      <div>
-                        <span class="right floated time">
-                          <strong>{wishDetails.itemPrice}$</strong>
-                        </span>
-                        <span class="category meta">Price for 1 item</span>
-                      </div>
-                      <div>
-                        <span class="right floated time">
-                          <strong>{wishDetails.reward}$</strong>
-                        </span>
-                        <span class="category meta">Reward for one item</span>
-                      </div>
-
-                      <Divider hidden />
-                      <Button primary fluid>
-                        Make your offer
-                      </Button>
-                      <Divider />
-                      <div>
-                        <span class="right floated time">
-                          <strong>{wishDetails.deliveryTo}</strong>
-                        </span>
-                        <span class="category meta">
-                          <i class="share icon" />
-                          Delivery to
-                        </span>
-                      </div>
-                      <div>
-                        <span class="right floated time">
-                          <strong>{wishDetails.deliveryFrom}</strong>
-                        </span>
-                        <span class="category meta">
-                          <i class="reply icon" />
-                          From
-                        </span>
-                      </div>
-                      <div>
-                        <span class="right floated time">
-                          <strong>{wishDetails.productURL}</strong>
-                        </span>
-                        <span class="category meta">
-                          <i class="map pin  icon" />
-                          Where to buy
-                        </span>
-                      </div>
-                      <div>
-                        <span class="right floated time">
-                          <strong>{wishDetails.quantity}</strong>
-                        </span>
-                        <span class="category meta">
-                          <i class="database icon" />
-                          Quantity
-                        </span>
-                      </div>
-                    </div>
-                    <div class="extra content">
-                      <a>
-                        <i class="comments outline icon" />2 Offers
-                      </a>
-                    </div>
-                  </div>
+                  <Sticky active={false} context={contextRef} offset={50}>
+                    <WishDetailsCardComponent
+                      wishDetails={wishDetails}
+                      openMakeYouOfferModalStatus={
+                        this.openMakeYouOfferModalStatus
+                      }
+                    />
+                  </Sticky>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -139,111 +95,93 @@ class WishDetailsMainComponent extends Component {
             </Grid>
             <Grid stackable centered>
               <Grid.Column width={8}>
-                <div class="ui card fluid">
-                  <div class="content">
-                    <div class="right floated meta">14h ago</div>
-                    <img
-                      class="ui avatar large image"
-                      src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
-                    />{" "}
-                    Elliot
-                    <div>
-                      <Rating maxRating={5} disabled defaultRating={3} />
-                    </div>
-                  </div>
-                  <div class="content">
-                    <div>
-                      <span class="right floated time">
-                        <strong>{"12-12-12"}</strong>
-                      </span>
-                      <span class="category meta">
-                        <i class="calendar outline icon" />
-                        Delivery date
-                      </span>
-                    </div>
-                    <div>
-                      <span class="right floated time">
-                        <strong>{wishDetails.deliveryFrom}</strong>
-                      </span>
-                      <span class="category meta">
-                        <i class="reply icon" />
-                        Delivery from
-                      </span>
-                    </div>
-                  </div>
-                  <div class=" content">
-                    <div class="ui large  left icon ">
-                      <span class="category ">Traveler reward</span>
-                      <span class="right floated time">
-                        <i class="dollar icon" />
-                        <strong>{wishDetails.reward}</strong>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <br />
-                <div class="ui card fluid">
-                  <div class="content">
-                    <div class="right floated meta">14h ago</div>
-                    <img
-                      class="ui avatar image"
-                      src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
-                    />{" "}
-                    Elliot
-                    <div>
-                      <Rating maxRating={5} disabled defaultRating={3} />
-                    </div>
-                  </div>
-                  <div class="content">
-                    <div>
-                      <span class="right floated time">
-                        <strong>{"12-12-12"}</strong>
-                      </span>
-                      <span class="category meta">
-                        <i class="reply icon" />
-                        Delivery date
-                      </span>
-                    </div>
-                    <div>
-                      <span class="right floated time">
-                        <strong>{wishDetails.deliveryFrom}</strong>
-                      </span>
-                      <span class="category meta">
-                        <i class="reply icon" />
-                        Delivery from
-                      </span>
-                    </div>
-                    <div>
-                      <span class="right floated time">
-                        <strong>{wishDetails.itemPrice}</strong>
-                      </span>
-                      <span class="category meta">
-                        <i class="reply icon" />
-                        Item price
-                      </span>
-                    </div>
-                    <div>
-                      <span class="right floated time">
-                        <strong>{wishDetails.quantity}</strong>
-                      </span>
-                      <span class="category meta">
-                        <i class="reply icon" />
-                        Item quantity
-                      </span>
-                    </div>
-                  </div>
-                  <div class=" content">
-                    <div class="ui large  left icon ">
-                      <span class="category ">Traveler reward</span>
-                      <span class="right floated time">
-                        <i class="dollar icon" />
-                        <strong>{wishDetails.reward}</strong>
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <>
+                  {offers ? (
+                    offers.map(offer => {
+                      return (
+                        <>
+                          <DeliveryOfferComponent {...offer} key={offer.id} />
+                          <Divider hidden />
+                        </>
+                      );
+                    })
+                  ) : (
+                    <Dimmer inverted active>
+                      <Loader>Loading</Loader>
+                    </Dimmer>
+                  )}
+                </>
               </Grid.Column>
             </Grid>
+            <Modal
+              open={
+                this.state.makeYouOfferModalStatus &&
+                this.props.makeYourOfferStatus !== "succed"
+              }
+              size="mini"
+              ononClose={this.closeMakeYouOfferModal}
+              onUnmount={this.closeMakeYouOfferModal}
+            >
+              {this.props.makeYourOfferShowSpinner ? (
+                <Dimmer inverted active>
+                  <Loader>Loading</Loader>
+                </Dimmer>
+              ) : null}
+              <Header icon="browser" content="Offer details" />
+              <Modal.Content>
+                <Form onSubmit={handleSubmit}>
+                  <Field
+                    component={Form.Input}
+                    label="Delivery from"
+                    name="deliveryFrom"
+                    placeholder="Delivery from"
+                  />
+                  <Field
+                    component={Form.Input}
+                    label="Traveler reward"
+                    name="travelerReward"
+                    placeholder="Traveler reward"
+                  />
+                  <label
+                    style={{
+                      display: "inline-block",
+                      margin: "0 0 .28571429rem 0",
+                      color: "rgba(0,0,0,.87)",
+                      fontSize: ".92857143em",
+                      fontWeight: "700",
+                      textTransform: "none"
+                    }}
+                  >
+                    Delivery date
+                  </label>
+                  <Field
+                    component={renderDatePicker}
+                    label="Delivery date"
+                    name="deliveryDate"
+                    placeholder="Product URL from online shops like Amazon, eBay etc..."
+                  />
+                  <Field component={ItemQuantityComponent} name="quantity" />
+                </Form>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button
+                  inverted
+                  color="red"
+                  onClick={this.closeMakeYouOfferModal}
+                >
+                  <Icon name="remove" /> Cancel
+                </Button>
+                <Button
+                  color="green"
+                  loaded={this.props.makeYourOfferShowSpinner}
+                  onClick={() => this.props.submitWishOffer(this.props.wishId)}
+                  inverted
+                >
+                  <Icon name="checkmark" /> Submit
+                </Button>
+              </Modal.Actions>
+              )}
+            </Modal>
           </>
         ) : (
           <Dimmer inverted active>
@@ -255,4 +193,8 @@ class WishDetailsMainComponent extends Component {
   }
 }
 
-export default WishDetailsMainComponent;
+export default reduxForm({
+  form: "makeYourOfferForm",
+  destroyOnUnmount: false,
+  initialValues: { quantity: 1 }
+})(WishDetailsMainComponent);

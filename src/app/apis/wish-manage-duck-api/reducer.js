@@ -21,11 +21,43 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
     }
 
     case types.SUBMIT_WISH_FAILURE: {
-      const { submitWishError } = action;
       return {
         ...state,
         submitWishShowSpinner: false,
         submitWishSucced: false
+      };
+    }
+
+    case types.SUBMIT_WISH_OFFER_REQUEST: {
+      return {
+        ...state,
+        makeYourOfferShowSpinner: true,
+        makeYourOfferStatus: "requested"
+      };
+    }
+
+    case types.SUBMIT_WISH_OFFER_SUCCESS: {
+      console.log("submit-reducer: ");
+      return {
+        ...state,
+        makeYourOfferShowSpinner: false,
+        makeYourOfferStatus: "succed"
+      };
+    }
+
+    case types.SUBMIT_WISH_OFFER_FAILURE: {
+      return {
+        ...state,
+        makeYourOfferShowSpinner: false,
+        makeYourOfferStatus: "failed"
+      };
+    }
+
+    case types.SUBMIT_WISH_OFFER_CLEAR: {
+      return {
+        ...state,
+        makeYourOfferShowSpinner: false,
+        makeYourOfferStatus: null
       };
     }
 

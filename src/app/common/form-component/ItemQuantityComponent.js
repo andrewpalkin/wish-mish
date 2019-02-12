@@ -16,9 +16,9 @@ import {
 export default class ItemQuantityInputComponent extends React.Component {
   render() {
     const {
-      input: { value, onChange }
+      input: { value = 1, onChange }
     } = this.props;
-    console.log("value: " + value);
+    console.log("value: ----------------------- " + value);
     return (
       <Grid>
         <Grid.Column width={8}>
