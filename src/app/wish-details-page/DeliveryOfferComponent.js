@@ -5,7 +5,7 @@ const DeliveryOfferComponent = props => {
   return (
     <div class="ui card fluid">
       <div class="content">
-        <div class="right floated meta">14h ago</div>
+        <div class="right floated meta">{`${props.diffDate} ago`}</div>
         <img
           class="ui avatar large image"
           src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
@@ -18,7 +18,7 @@ const DeliveryOfferComponent = props => {
       <div class="content">
         <div>
           <span class="right floated time">
-            <strong>{props.deliveryBeforeDate}</strong>
+            <strong>{props.deliveryDate}</strong>
           </span>
           <span class="category meta">
             <i class="calendar outline icon" />

@@ -25,6 +25,7 @@ import { Field, reduxForm } from "redux-form";
 import renderDatePicker from "../common/components/form/RenderDatePicker";
 import WishDetailsCardComponent from "./WishDetailsCardComponent";
 import DeliveryOfferComponent from "./DeliveryOfferComponent";
+import dateDiff from "../common/utils/dates/dateDiff";
 
 import ItemQuantityComponent from "../common/form-component/ItemQuantityComponent";
 
@@ -50,6 +51,8 @@ class WishDetailsMainComponent extends Component {
     console.log("Wish details is: ", wishDetails);
     console.log("Offers from DB: ", this.props.offers);
     const { handleSubmit } = this.props;
+    const currentDate = new Date();
+
     return (
       <div ref={this.handleContextRef}>
         {wishDetails ? (
@@ -100,7 +103,11 @@ class WishDetailsMainComponent extends Component {
                     offers.map(offer => {
                       return (
                         <>
-                          <DeliveryOfferComponent {...offer} key={offer.id} />
+                          <DeliveryOfferComponent
+                            {...offer}
+                            key={offer.id}
+                            diffDate={dateDiff(offer.createdDate, currentDate)}
+                          />
                           <Divider hidden />
                         </>
                       );
