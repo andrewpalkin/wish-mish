@@ -1,26 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Dropdown,
-  Image,
-  Menu,
-  Visibility,
-  Button,
-  Icon,
-  Header,
-  Segment,
-  Step,
-  Grid,
-  Dimmer,
-  Loader,
-  Divider,
-  Rating,
-  Rail,
-  Sticky,
-  Modal,
-  Form
-} from "semantic-ui-react";
-import { Field, reduxForm } from "redux-form";
+import { Button, Divider } from "semantic-ui-react";
 
 const WishDetailsCardComponent = props => {
   const wishDetails = props.wishDetails;

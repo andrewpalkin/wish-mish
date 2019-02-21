@@ -11,11 +11,9 @@ import {
   Label
 } from "semantic-ui-react";
 
-const WishComponent = props => {
+const WishLightComponent = props => {
   const { diffDate } = props;
 
-  console.log(" fromWishComponent FireStore data ", props);
-  console.log("Reward = ", props.reward ? "true" : "false");
   return (
     <Card fluid link>
       <Card.Content>
@@ -30,9 +28,12 @@ const WishComponent = props => {
             ) : (
               <Label
                 size="large"
-                color="pink"
                 circular
-                style={{ marginRight: "4px" }}
+                style={{
+                  marginRight: "4px",
+                  backgroundColor: "#F89235",
+                  color: "white"
+                }}
               >
                 {props.initials}
               </Label>
@@ -50,7 +51,7 @@ const WishComponent = props => {
               {props.firstName}
             </label>
           </Grid.Column>
-          <Grid.Column width={8} align="right" verticalAlign="middle">
+          <Grid.Column width={8} textAlign="right" verticalAlign="middle">
             <label
               floated="right"
               style={{
@@ -88,7 +89,7 @@ const WishComponent = props => {
                 <Grid stackable columns={3}>
                   <Grid.Column
                     style={{
-                      paddingTop: "0px",
+                      paddingTop: "5px",
                       paddingBottom: "0px",
                       verticalAlign: "middle"
                     }}
@@ -97,19 +98,18 @@ const WishComponent = props => {
                       <label
                         style={{
                           fontSize: "1em",
-                          display: "inline-block",
                           color: "rgba(0, 0, 0, 0.4)"
                         }}
                       >
                         Delivered To
                       </label>
+                      <Grid.Row />
                       <Header
                         as="h4"
                         style={{
-                          display: "inline-block",
-                          marginLeft: "10px",
-                          marginTop: "10px",
-                          marginBottom: "10px"
+                          marginLeft: "0px",
+                          marginTop: "5px",
+                          marginBottom: "5px"
                         }}
                       >
                         {props.deliveryTo}
@@ -118,26 +118,25 @@ const WishComponent = props => {
                   </Grid.Column>
                   <Grid.Column
                     style={{
-                      paddingTop: "0px",
+                      paddingTop: "5px",
                       paddingBottom: "0px"
                     }}
                   >
                     <label
                       style={{
-                        display: "inline-block",
                         fontSize: "1em",
                         color: "rgba(0, 0, 0, 0.4)"
                       }}
                     >
                       From
                     </label>
+                    <Grid.Row />
                     <Header
                       as="h4"
                       style={{
-                        display: "inline-block",
-                        marginLeft: "10px",
-                        marginTop: "10px",
-                        marginBottom: "10px"
+                        marginLeft: "0px",
+                        marginTop: "5px",
+                        marginBottom: "5px"
                       }}
                     >
                       {props.deliveryFrom}
@@ -146,26 +145,25 @@ const WishComponent = props => {
                   {props.deliveryBeforeDate ? (
                     <Grid.Column
                       style={{
-                        paddingTop: "0px",
+                        paddingTop: "5px",
                         paddingBottom: "0px"
                       }}
                     >
                       <label
                         style={{
-                          display: "inline-block",
                           fontSize: "1em",
                           color: "rgba(0, 0, 0, 0.4)"
                         }}
                       >
                         Before
                       </label>
+                      <Grid.Row />
                       <Header
                         as="h4"
                         style={{
-                          display: "inline-block",
-                          marginLeft: "10px",
-                          marginTop: "10px",
-                          marginBottom: "10px"
+                          marginLeft: "0px",
+                          marginTop: "5px",
+                          marginBottom: "5px"
                         }}
                       >
                         {props.deliveryBeforeDate}
@@ -175,67 +173,15 @@ const WishComponent = props => {
                 </Grid>
               </Segment>
             </Grid.Row>
-            {props.productURL ? (
-              <Grid.Row>
-                <label
-                  style={{
-                    display: "inline-block",
-                    fontSize: "1em",
-                    color: "rgba(0, 0, 0, 0.4)"
-                  }}
-                >
-                  Item URL
-                </label>
-                <Header
-                  color="blue"
-                  as="a"
-                  style={{
-                    display: "inline-block",
-                    marginLeft: "10px",
-                    marginTop: "10px"
-                  }}
-                >
-                  {props.productURL}
-                </Header>
-              </Grid.Row>
-            ) : null}
-            <Divider />
-            {props.reward ? (
-              <>
-                <label
-                  style={{
-                    fontWeight: 700,
-                    fontSize: "1.28571429em",
-                    marginTop: "-.21425em",
-                    lineHeight: "1.28571429em"
-                  }}
-                >
-                  Traveler reward
-                </label>
-                <Divider hidden />
-              </>
-            ) : null}
 
-            <Grid>
-              <Grid.Column width={8} verticalAlign="middle">
-                <Header size="medium">
-                  {props.reward ? (
-                    <>
-                      <Icon name="dollar" />
-                      {Number(props.reward)
-                        .toFixed(2)
-                        .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                    </>
-                  ) : null}
-                </Header>
-              </Grid.Column>
-
-              <Grid.Column width={8} align="right" verticalAlign="middle">
-                <Button basic>Make Offer</Button>
-              </Grid.Column>
-            </Grid>
-            <Divider hidden />
-            <Grid>
+            <Grid
+              style={{
+                paddingTop: "10px",
+                paddingBottom: "5px",
+                paddingRight: "5px",
+                paddingLeft: "5px"
+              }}
+            >
               <Grid.Column width={8} verticalAlign="middle">
                 <label
                   style={{
@@ -270,4 +216,4 @@ const WishComponent = props => {
   );
 };
 
-export default WishComponent;
+export default WishLightComponent;

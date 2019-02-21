@@ -20,7 +20,7 @@ const HomeContainer = compose(
     mapDispatchToProps
   ),
   firestoreConnect([
-    { collection: "wishes", orderBy: [["publishedDate", "desc"]] }
+    { collection: "wishes", orderBy: [["publishedDate", "desc"]], limit: 4 }
   ])
 )(HomeComponent);
 
