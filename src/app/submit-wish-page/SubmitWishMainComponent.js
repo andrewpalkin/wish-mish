@@ -1,15 +1,6 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import {
-  Container,
-  Dropdown,
-  Image,
-  Menu,
-  Visibility,
-  Button,
   Icon,
-  Header,
-  Segment,
   Step
 } from "semantic-ui-react";
 

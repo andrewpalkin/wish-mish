@@ -1,5 +1,6 @@
 // operations.js
 import { Creators } from "./actions";
+
 const submitWishRequest = Creators.submitWishRequest;
 const submitWishSuccess = Creators.submitWishSuccess;
 const submitWishFailure = Creators.submitWishFailure;
@@ -22,7 +23,7 @@ const submitWishOperation = submitWishData => {
       .collection("wishes")
       .add({
         ...submitWishData,
-        stam: "vovaTest"
+        status: "open"
       })
       .then(submitWishResponse => {
         dispatch(submitWishSuccess(submitWishResponse));
@@ -42,8 +43,6 @@ const submitWishOfferOperation = wishId => {
     const firestore = getFirestore();
     const createdDate = new Date();
     const store = getState();
-    console.log("Our State :", getState);
-    console.log("We are looking for wish ID: " + wishId);
     firestore
       .collection("offers")
       .add({

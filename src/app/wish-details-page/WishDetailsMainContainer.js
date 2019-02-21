@@ -43,7 +43,6 @@ const HomeContainer = compose(
     mapDispatchToProps
   ),
   firestoreConnect(props => {
-    console.log("WishContainerProps: ", props);
     return [
       { collection: "wishes" },
       {
