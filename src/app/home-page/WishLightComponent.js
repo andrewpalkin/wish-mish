@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Image,
-  Button,
-  Card,
-  Grid,
-  Icon,
-  Header,
-  Segment,
-  Divider,
-  Label
-} from "semantic-ui-react";
+import { Image, Card, Grid, Header, Segment, Label } from "semantic-ui-react";
 
 const WishLightComponent = props => {
   const { diffDate } = props;
