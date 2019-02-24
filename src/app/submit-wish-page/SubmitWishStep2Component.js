@@ -2,8 +2,6 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import {
   Form,
-  Label,
-  Transition,
   Segment,
   Grid,
   Button,

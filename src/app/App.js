@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Button, Image } from "semantic-ui-react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import NavBarContainer from "./common/layout/navbar/NavBarContainer";
-import OnTopNavBar from "./common/layout/navbar/OnTopNavBar";
 import Footer from "./common/layout/footer/Footer";
 import { Container } from "semantic-ui-react";
 import HomePageContainer from "./home-page/HomeContainer";

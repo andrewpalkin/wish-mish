@@ -1,21 +1,13 @@
 import React, { Component } from "react";
 import {
-  Container,
-  Dropdown,
   Image,
-  Menu,
-  Visibility,
   Button,
   Icon,
   Header,
-  Segment,
-  Step,
   Grid,
   Dimmer,
   Loader,
   Divider,
-  Rating,
-  Rail,
   Sticky,
   Modal,
   Form

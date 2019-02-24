@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Image,
-  Card,
-  Grid,
-  Header,
-  Segment,
-  Label,
-  Icon
-} from "semantic-ui-react";
+import { Image, Card, Grid, Icon } from "semantic-ui-react";
 
 const CompleteWishComponent = props => {
   return (

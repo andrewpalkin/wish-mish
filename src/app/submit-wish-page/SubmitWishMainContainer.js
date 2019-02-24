@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import SubmitWishMainComponent from "./SubmitWishMainComponent";
-import { submit, reset } from "redux-form";
+import { submit } from "redux-form";
 import { submitWishOperations } from "../apis/wish-manage-duck-api";
 
 const mapStateToProps = state => {
