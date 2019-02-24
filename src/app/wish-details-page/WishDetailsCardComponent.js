@@ -3,6 +3,7 @@ import { Button, Divider } from "semantic-ui-react";
 
 const WishDetailsCardComponent = props => {
   const wishDetails = props.wishDetails;
+  const uidOfLoggedInUser = props.uidOfLoggedInUser;
   return (
     <div class="ui card fluid">
       <div class="content">
@@ -34,10 +35,15 @@ const WishDetailsCardComponent = props => {
           <span class="category meta">Reward for one item</span>
         </div>
 
-        <Divider hidden />
-        <Button primary fluid onClick={props.openMakeYouOfferModalStatus}>
-          Make your offer
-        </Button>
+        {uidOfLoggedInUser ? (
+          <>
+            <Divider hidden />
+            <Button primary fluid onClick={props.openMakeYouOfferModalStatus}>
+              Make your offer
+            </Button>
+          </>
+        ) : null}
+
         <Divider />
         <div>
           <span class="right floated time">

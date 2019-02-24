@@ -9,6 +9,10 @@ const mapStateToProps = (state, ownProps) => {
   const wishId = ownProps.match.params.id;
   const wishes = state.firestore.data.wishes;
   const wishDetails = wishes ? wishes[wishId] : null;
+  const uidOfLoggedInUser =
+    state.firebase.auth && state.firebase.auth.uid
+      ? state.firebase.auth.uid
+      : null;
   const makeYourOfferShowSpinner = state.submitWish.makeYourOfferShowSpinner;
   const makeYourOfferStatus = state.submitWish.makeYourOfferStatus;
   const offers = state.firestore ? state.firestore.ordered.offers : [];
@@ -18,20 +22,17 @@ const mapStateToProps = (state, ownProps) => {
     wishId,
     makeYourOfferShowSpinner,
     makeYourOfferStatus,
-    offers
+    offers,
+    uidOfLoggedInUser
   };
 };
 
 const mapDispatchToProps = dispatch => {
   const submitWishOffer = wishId => {
-    console.log("submitWishOFferContainer-> submitWishOfferData: ");
     dispatch(submitWishOperations.submitWishOfferOperation(wishId));
   };
 
   const clearSubmitWishOfferDataOperation = () => {
-    console.log(
-      "submitWishOFferContainer-> clearSubmitWishOfferDataOperation: "
-    );
     dispatch(submitWishOperations.clearSubmitWishOfferDataOperation());
   };
   return { submitWishOffer, clearSubmitWishOfferDataOperation };

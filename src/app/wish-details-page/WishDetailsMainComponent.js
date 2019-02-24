@@ -31,7 +31,6 @@ class WishDetailsMainComponent extends Component {
   };
 
   closeMakeYouOfferModal = () => {
-    console.log("SSSS");
     this.props.clearSubmitWishOfferDataOperation();
     this.setState({ makeYouOfferModalStatus: false });
   };
@@ -40,9 +39,8 @@ class WishDetailsMainComponent extends Component {
     const wishDetails = this.props.wishDetails;
     const offers = this.props.offers;
     const { active, contextRef } = this.state;
-    console.log("Wish details is: ", wishDetails);
-    console.log("Offers from DB: ", this.props.offers);
     const { handleSubmit } = this.props;
+    const uidOfLoggedInUser = this.props.uidOfLoggedInUser;
     const currentDate = new Date();
 
     return (
@@ -69,6 +67,7 @@ class WishDetailsMainComponent extends Component {
                   <Sticky active={false} context={contextRef} offset={50}>
                     <WishDetailsCardComponent
                       wishDetails={wishDetails}
+                      uidOfLoggedInUser={uidOfLoggedInUser}
                       openMakeYouOfferModalStatus={
                         this.openMakeYouOfferModalStatus
                       }
