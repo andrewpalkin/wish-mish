@@ -102,6 +102,8 @@ class WishDetailsMainComponent extends Component {
                           <DeliveryOfferComponent
                             {...offer}
                             key={offer.id}
+                            userIdByWish={wishDetails.userId}
+                            wishStatus={wishDetails.status}
                             diffDate={dateDiff(offer.createdDate, currentDate)}
                           />
                           <Divider hidden />

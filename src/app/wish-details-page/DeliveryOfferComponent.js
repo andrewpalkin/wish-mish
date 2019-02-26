@@ -55,7 +55,7 @@ const DeliveryOfferComponent = props => {
         </div>
       </div>
       <div class=" content">
-        <div class="ui large  left icon ">
+        <div class="ui large left icon">
           <span class="category ">Traveler reward</span>
           <span class="right floated time">
             <i class="dollar icon" />
@@ -63,6 +63,12 @@ const DeliveryOfferComponent = props => {
           </span>
         </div>
       </div>
+      {props.userId === props.userIdByWish && props.wishStatus === "open" ? (
+        <div class="ui bottom attached button orange">
+          <i class="handshake outline icon" />
+          Agree to Offer
+        </div>
+      ) : null}
     </div>
   );
 };
