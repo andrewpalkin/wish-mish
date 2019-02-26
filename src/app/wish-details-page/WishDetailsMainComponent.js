@@ -68,6 +68,12 @@ class WishDetailsMainComponent extends Component {
                     <WishDetailsCardComponent
                       wishDetails={wishDetails}
                       uidOfLoggedInUser={uidOfLoggedInUser}
+                      offers={offers}
+                      key={wishDetails.id}
+                      diffDate={dateDiff(
+                        wishDetails.publishedDate,
+                        currentDate
+                      )}
                       openMakeYouOfferModalStatus={
                         this.openMakeYouOfferModalStatus
                       }

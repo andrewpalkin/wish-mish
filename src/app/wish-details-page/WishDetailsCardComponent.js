@@ -1,24 +1,42 @@
 import React from "react";
-import { Button, Divider } from "semantic-ui-react";
+import { Button, Divider, Image, Label } from "semantic-ui-react";
+
+import offerPerUserExist from "../common/utils/offerPerUserExist";
 
 const WishDetailsCardComponent = props => {
   const wishDetails = props.wishDetails;
   const uidOfLoggedInUser = props.uidOfLoggedInUser;
+  const offers = props.offers;
   return (
     <div class="ui card fluid">
       <div class="content">
         <div class="center aligned  author">
-          <img
-            class="ui avatar image big"
-            src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"
-          />
+          {wishDetails.imageURL ? (
+            <Image
+              circular
+              size="big"
+              src="https://react.semantic-ui.com/images/avatar/large/steve.jpg"
+            />
+          ) : (
+            <Label
+              size="big"
+              circular
+              style={{
+                marginRight: "4px",
+                backgroundColor: "#F89235",
+                color: "white"
+              }}
+            >
+              {wishDetails.initials}
+            </Label>
+          )}
         </div>
         <br />
 
         <div class="center aligned header">{wishDetails.firstName}</div>
         <Divider hidden />
         <div class="meta">
-          <span class="right floated time">2 days ago</span>
+          <span class="right floated time">{`${props.diffDate} ago`}</span>
           <span class="category">Requested</span>
         </div>
         <Divider />
@@ -35,7 +53,9 @@ const WishDetailsCardComponent = props => {
           <span class="category meta">Reward for one item</span>
         </div>
 
-        {uidOfLoggedInUser ? (
+        {uidOfLoggedInUser &&
+        wishDetails.userId !== uidOfLoggedInUser &&
+        !offerPerUserExist(offers, uidOfLoggedInUser) ? (
           <>
             <Divider hidden />
             <Button primary fluid onClick={props.openMakeYouOfferModalStatus}>
@@ -83,9 +103,18 @@ const WishDetailsCardComponent = props => {
         </div>
       </div>
       <div class="extra content">
-        <a>
-          <i class="comments outline icon" />2 Offers
-        </a>
+        <i class="comments outline icon" />
+        {offers && offers.length === 1 ? (
+          <>{offers && offers.length} Offer</>
+        ) : (
+          <>
+            {offers && offers.length > 0 ? (
+              <>{offers && offers.length} Offers</>
+            ) : (
+              "No Offers"
+            )}
+          </>
+        )}
       </div>
     </div>
   );
