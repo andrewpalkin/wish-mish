@@ -69,7 +69,6 @@ class WishDetailsMainComponent extends Component {
                       wishDetails={wishDetails}
                       uidOfLoggedInUser={uidOfLoggedInUser}
                       offers={offers}
-                      key={wishDetails.id}
                       diffDate={dateDiff(
                         wishDetails.publishedDate,
                         currentDate
