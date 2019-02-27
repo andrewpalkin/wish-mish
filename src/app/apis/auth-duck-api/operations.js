@@ -1,6 +1,6 @@
 // operations.js
 import { Creators } from "./actions";
-import { Redirect } from "react-router-dom";
+
 const loginRequest = Creators.loginRequest;
 const loginSuccess = Creators.loginSuccess;
 const loginFailure = Creators.loginFailure;
@@ -36,8 +36,6 @@ const loginOperation = loginData => {
       .signInWithEmailAndPassword(loginData.loginEmail, loginData.loginPassword)
       .then(() => {
         dispatch(loginSuccess());
-        console.log("loginSuccess - : ", loginData);
-        <Redirect to="/" />;
       })
       .catch(err => {
         dispatch(loginFailure(err));

@@ -42,6 +42,7 @@ class WishDetailsMainComponent extends Component {
     const { handleSubmit } = this.props;
     const uidOfLoggedInUser = this.props.uidOfLoggedInUser;
     const currentDate = new Date();
+    const handleAcceptOffer = this.props.handleAcceptOffer;
 
     return (
       <div ref={this.handleContextRef}>
@@ -105,6 +106,7 @@ class WishDetailsMainComponent extends Component {
                             userIdByWish={wishDetails.userId}
                             wishStatus={wishDetails.status}
                             diffDate={dateDiff(offer.createdDate, currentDate)}
+                            handleAcceptOffer={() => handleAcceptOffer (wishId, offer.id) }
                           />
                           <Divider hidden />
                         </>

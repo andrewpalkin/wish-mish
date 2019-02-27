@@ -35,7 +35,12 @@ const mapDispatchToProps = dispatch => {
   const clearSubmitWishOfferDataOperation = () => {
     dispatch(submitWishOperations.clearSubmitWishOfferDataOperation());
   };
-  return { submitWishOffer, clearSubmitWishOfferDataOperation };
+
+  const handleAcceptOffer = (wishId, offerId) => {
+    dispatch(submitWishOperations.acceptOfferOperation(wishId, offerId));
+  };
+
+  return { submitWishOffer, clearSubmitWishOfferDataOperation, handleAcceptOffer };
 };
 
 const HomeContainer = compose(

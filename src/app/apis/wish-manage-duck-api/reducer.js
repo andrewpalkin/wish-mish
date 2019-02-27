@@ -12,7 +12,6 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
 
     case types.SUBMIT_WISH_SUCCESS: {
       const { submitWishResponse } = action;
-      console.log("submit-reducer: ", submitWishResponse);
       return {
         ...state,
         submitWishSucced: true,
@@ -37,7 +36,6 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
     }
 
     case types.SUBMIT_WISH_OFFER_SUCCESS: {
-      console.log("submit-reducer: ");
       return {
         ...state,
         makeYourOfferShowSpinner: false,
@@ -58,6 +56,24 @@ const submitWishReducer = (state = INITIAL_STATE, action) => {
         ...state,
         makeYourOfferShowSpinner: false,
         makeYourOfferStatus: null
+      };
+    }
+
+    case types.ACCEPT_OFFER_REQUEST: {
+      return{
+        ...state
+      };
+    }
+
+    case types.ACCEPT_OFFER_SUCCESS: {
+      return{
+        ...state
+      };
+    }
+
+    case types.ACCEPT_OFFER_FAILURE: {
+      return{
+        ...state
       };
     }
 

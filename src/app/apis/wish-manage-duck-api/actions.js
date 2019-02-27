@@ -8,7 +8,12 @@ const { Creators, Types } = createActions({
   submitWishOfferRequest: ["submitWishOfferData"],
   submitWishOfferSuccess: ["submitWishOfferResponse"],
   submitWishOfferFailure: ["submitWishOfferError"],
-  submitWishOfferClear: ["submitWishOfferClear"]
+  submitWishOfferClear: ["submitWishOfferClear"],
+
+  acceptOfferRequest: ["acceptOfferRequestData"],
+  acceptOfferSuccess: ["acceptOfferResponse"],
+  acceptOfferFailure: ["acceptOfferError"]
+
 });
 
 export { Creators, Types };
