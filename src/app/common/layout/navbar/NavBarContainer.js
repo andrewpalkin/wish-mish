@@ -12,14 +12,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   const signout = () => {
-    console.log("signoutContainer-> signout: ");
-    //dispatch(submitWishOperations.submitWishOperation(loginFormData));
     dispatch(authOperations.signoutOperation());
   };
 
   const cleanLoginError = () => {
-    console.log("cleanLoginError-> loginFormData: ");
-    //dispatch(submitWishOperations.submitWishOperation(loginFormData));
     dispatch(authOperations.cleanLoginErrorOperation());
   };
 

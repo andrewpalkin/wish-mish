@@ -1,6 +1,6 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import { Visibility, Modal } from "semantic-ui-react";
+import { Modal } from "semantic-ui-react";
 
 import NavBarMenu from "../../components/navbar/NavBarMenu";
 import NavBarLoginSignUpButtons from "../../components/navbar/NavBarLoginSignUpButtons";
@@ -49,8 +49,27 @@ export default class StickyNavBar extends Component {
   };
 
   handleDropdownChange = (e, { name, value }) => {
-    console.log("handleDropdownChange name: ", name + "  value:" + value);
-    if (value === "signout") this.props.signout();
+
+    switch (value) {
+      case "account" : {
+        this.props.signout();
+        break;
+      }
+
+      case "settings" : {
+
+        break;
+      }
+
+      case "signout" : {
+        this.props.signout();
+        break;
+      }
+
+      default:{
+        console.log ("Please check the value of menu, as it was not found and default state triggered");
+      }
+    }
   };
 
   render() {
