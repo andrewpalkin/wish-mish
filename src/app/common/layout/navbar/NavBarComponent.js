@@ -8,7 +8,6 @@ import NavBarLoginSignUpButtons from "../../components/navbar/NavBarLoginSignUpB
 import NavBarAddWishSignOutButtons from "../../components/navbar/NavBarAddWishSignOutButtons.js";
 
 import LoginFormContainer from "../login/LoginFormContainer";
-import {Grid} from "semantic-ui-react/dist/commonjs/collections/Grid";
 
 class StickyNavBar extends Component {
     state = {
