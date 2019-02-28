@@ -52,8 +52,6 @@ class StickyNavBar extends Component {
     };
 
     handleDropdownChange = (history) => (e, {name, value}) => {
-        console.log(history)
-
         switch (value) {
             case "account" : {
                 history.push(`/account/${this.props.auth.uid}`);
