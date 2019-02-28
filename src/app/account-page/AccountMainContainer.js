@@ -32,14 +32,14 @@ const AccountContainer = compose(
             {
                 collection: "wishes",
                 where: ["userId", "==", props.userId],
-                orderBy: [["createdDate", "desc"]],
-                store: "accountRelatedWishes"
+                orderBy: [["publishedDate", "desc"]],
+                storeAs: "accountRelatedWishes"
             },
             {
                 collection: "offers",
                 where: ["userId", "==", props.userId],
                 orderBy: [["createdDate", "desc"]],
-                store: "accountRelatedOffers"
+                storeAs: "accountRelatedOffers"
             }
         ];
     })
