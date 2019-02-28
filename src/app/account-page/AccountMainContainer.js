@@ -7,9 +7,12 @@ import {accountOperations} from "../apis/account-manage-duck-spi";
 
 const mapStateToProps = (state, ownProps) => {
     const userId = ownProps.match.params.id;
-
+    const accountRelatedWishes = state.firestore ? state.firestore.ordered.accountRelatedWishes : [];
+    const accountRelatedOffers = state.firestore ? state.firestore.ordered.accountRelatedOffers : [];
     return {
-        userId
+        userId,
+        accountRelatedWishes,
+        accountRelatedOffers
     };
 };
 
