@@ -5,8 +5,8 @@ const cancelWishRequest = Creators.cancelWishRequest;
 const cancelWishSuccess = Creators.cancelWishSuccess;
 const cancelWishFailure = Creators.cancelWishFailure;
 
-const cancelWishAccountMainComponent = (wishId, offerId) =>{
-    console.log("wishId -> " + wishId + "offerId -> " + offerId);
+const cancelWishAccountMainComponent = wishId =>{
+    console.log("wishId -> " + wishId);
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // Dispatching this action will toggle the 'showRedditSpinner'
         // flag in the store, so that the UI can show a loading icon.
@@ -16,24 +16,15 @@ const cancelWishAccountMainComponent = (wishId, offerId) =>{
         firestore
             .collection("wishes")
             .doc(wishId)
-            .update({
-                status: "complete"
+            .delete()
+            .then(response => {
+                dispatch(cancelWishSuccess(response));
             })
-            .then(() => {
-                firestore
-                    .collection("offers")
-                    .doc(offerId)
-                    .update({status: "accepted"})
-            })
-            .then(acceptOfferResponse => {
-                dispatch(cancelWishSuccess(acceptOfferResponse));
-            })
-            .catch(acceptOfferError => {
-                dispatch(cancelWishFailure(acceptOfferError));
+            .catch(error => {
+                dispatch(cancelWishFailure(error));
             });
     };
 };
-
 
 export default {
     cancelWishAccountMainComponent

@@ -2,13 +2,15 @@ import React, {Component} from "react";
 import {Divider, Grid, Header, Icon} from 'semantic-ui-react'
 import dateDiff from "../common/utils/dates/dateDiff";
 import {Link} from "react-router-dom";
-import WishLightComponent from "../home-page/WishLightComponent";
-import DeliveryOfferComponent from "../wish-details-page/DeliveryOfferComponent";
+import AccountWishComponent from "./AccountWishComponent";
+import AccountPlacedOfferComponent from "./AccountPlacedOfferComponent";
 
 class AccountMainComponent extends Component {
 
     render() {
         const currentDate = new Date();
+        const cancelWishAccountMainComponent = this.props.cancelWishAccountMainComponent;
+
         return (
 
             <React.Fragment>
@@ -42,13 +44,14 @@ class AccountMainComponent extends Component {
                                         paddingLeft: "5px"
                                     }}
                                 >
-                                    <Link to={"/wish/" + wish.id}>
-                                        <WishLightComponent
+
+                                        <AccountWishComponent
                                             {...wish}
                                             key={wish.id}
                                             diffDate={diffDate}
+                                            cancelWishAccountMainComponent={() => cancelWishAccountMainComponent(wish.id)}
                                         />
-                                    </Link>
+
                                 </Grid.Column> : null
                         );
                     })}
@@ -84,7 +87,7 @@ class AccountMainComponent extends Component {
                                     }}
                                 >
                                     <Link to={"/wish/" + wish.id}>
-                                        <WishLightComponent
+                                        <AccountWishComponent
                                             {...wish}
                                             key={wish.id}
                                             diffDate={diffDate}
@@ -122,11 +125,13 @@ class AccountMainComponent extends Component {
                                     paddingLeft: "5px"
                                 }}
                             >
-                                <DeliveryOfferComponent
-                                    {...offer}
-                                    key={offer.id}
-                                    diffDate={dateDiff(offer.createdDate, currentDate)}
-                                />
+                                <Link to={"/wish/" + offer.wishId}>
+                                    <AccountPlacedOfferComponent
+                                        {...offer}
+                                        key={offer.id}
+                                        diffDate={dateDiff(offer.createdDate, currentDate)}
+                                    />
+                                </Link>
                             </Grid.Column>
                         );
                     })}

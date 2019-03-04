@@ -18,8 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
 
-    const cancelWishAccountMainComponent = () => {
-        dispatch(accountOperations.cancelWishAccountMainComponent());
+    const cancelWishAccountMainComponent = (wishId) => {
+        dispatch(accountOperations.cancelWishAccountMainComponent(wishId));
     };
 
     return { cancelWishAccountMainComponent};
