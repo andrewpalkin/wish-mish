@@ -23,10 +23,7 @@ const cancelWishAccountMainComponent = wishId => {
                     .get()
                     .then((context) => {
                         context.forEach((doc) => {
-                            firestore
-                                .collection("offers")
-                                .doc(doc.ref.id)
-                                .delete()
+                            doc.ref.delete()
                                 .then(response => {
                                     dispatch(cancelWishSuccess(response));
                                 })
