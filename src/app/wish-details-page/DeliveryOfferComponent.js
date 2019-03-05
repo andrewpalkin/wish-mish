@@ -39,8 +39,8 @@ class DeliveryOfferComponent extends Component {
                         <div className="right floated meta">{`${this.props.diffDate} ago`}</div>
                         <img className="ui avatar large image"
                             src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
-                        />{" "}
-                        Elliot
+                        />
+                        {this.props.firstName}
                         <div>
                             <Rating maxRating={5} disabled defaultRating={3}/>
                         </div>
