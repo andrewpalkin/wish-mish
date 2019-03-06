@@ -1,7 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Header, Icon, Menu, Visibility} from "semantic-ui-react";
-import styles from "../../style/style.css.js";
 
 const NavBarMenuComponent = props => {
     return (
@@ -11,7 +10,7 @@ const NavBarMenuComponent = props => {
             once={false}
         >
             <div>
-                <Menu borderless fixed="top" style={styles.fixedMenuStyle}>
+                <Menu borderless fixed="top" style={props.menuStyle}>
                     <Menu.Item>
                         <Icon loading name="life ring"/>
                     </Menu.Item>

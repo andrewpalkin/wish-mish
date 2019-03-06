@@ -3,28 +3,28 @@ import React, {Component} from "react";
 import {Modal} from "semantic-ui-react";
 import {withRouter} from 'react-router-dom'
 
-import NavBarMenu from "../../components/navbar/NavBarMenu";
+import NavBarMenuComponent from "../../components/navbar/NavBarMenu";
 import NavBarLoginSignUpButtons from "../../components/navbar/NavBarLoginSignUpButtons";
 import NavBarAddWishSignOutButtons from "../../components/navbar/NavBarAddWishSignOutButtons.js";
 
 import LoginFormContainer from "../login/LoginFormContainer";
+import styles from "../../style/style.css.js";
 
 class StickyNavBar extends Component {
     state = {
         menuFixed: false,
         overlayFixed: false,
         showLoginModal: false,
-        activeItem: "app"
+        activeItem: "app",
+        menuStyle: styles.fixedMenuStyleWithoutShadow
     };
 
-    handleOverlayRef = c => {
-        const {overlayRect} = this.state;
+    setShadowMenu = () => {
+        this.setState({menuStyle: styles.fixedMenuStyleWithShadow});
+    };
 
-        if (!overlayRect) {
-            this.setState({
-                overlayRect: _.pick(c.getBoundingClientRect(), "height", "width")
-            });
-        }
+    unSetShadowMenu = () => {
+        this.setState({menuStyle: styles.fixedMenuStyleWithoutShadow});
     };
 
     close = () => {
@@ -77,10 +77,10 @@ class StickyNavBar extends Component {
             showLoginModal,
             closeOnDimmerClick = false,
             activeItem,
-            menuFixed
+            menuFixed,
+            menuStyle
         } = this.state;
         const {auth, history} = this.props;
-        console.log("activeItem : ", activeItem);
 
         return (
             <>
@@ -102,10 +102,13 @@ class StickyNavBar extends Component {
                         />
                     </Modal>
                 ) : null}
-                <NavBarMenu
+                <NavBarMenuComponent
                     menuFixed={menuFixed}
                     handleItemClick={this.handleItemClick}
                     activeItem={activeItem}
+                    menuStyle={menuStyle}
+                    setShadowMenu={this.setShadowMenu}
+                    unSetShadowMenu={this.unSetShadowMenu}
                 >
                     {auth.uid ? (
                         <NavBarAddWishSignOutButtons
@@ -121,7 +124,7 @@ class StickyNavBar extends Component {
                             activeItem={activeItem}
                         />
                     )}
-                </NavBarMenu>
+                </NavBarMenuComponent>
             </>
         );
     }
