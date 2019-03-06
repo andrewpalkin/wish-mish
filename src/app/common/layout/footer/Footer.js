@@ -4,16 +4,16 @@ import {Container, Divider, Grid, Header, Image, List, Segment} from "semantic-u
 const Footer = () => {
     return (
         <Segment
-            inverted
             vertical
             style={{margin: "5em 0em 0em", padding: "5em 0em"}}
             fixed={"bottom"}
         >
             <Container textAlign="center">
-                <Grid divided inverted stackable>
+                <Divider section/>
+                <Grid divided stackable>
                     <Grid.Column width={3}>
-                        <Header inverted as="h4" content="Group 1"/>
-                        <List link inverted>
+                        <Header as="h4" content="Group 1"/>
+                        <List link>
                             <List.Item as="a">Link One</List.Item>
                             <List.Item as="a">Link Two</List.Item>
                             <List.Item as="a">Link Three</List.Item>
@@ -21,8 +21,8 @@ const Footer = () => {
                         </List>
                     </Grid.Column>
                     <Grid.Column width={3}>
-                        <Header inverted as="h4" content="Group 2"/>
-                        <List link inverted>
+                        <Header as="h4" content="Group 2"/>
+                        <List link>
                             <List.Item as="a">Link One</List.Item>
                             <List.Item as="a">Link Two</List.Item>
                             <List.Item as="a">Link Three</List.Item>
@@ -30,8 +30,8 @@ const Footer = () => {
                         </List>
                     </Grid.Column>
                     <Grid.Column width={3}>
-                        <Header inverted as="h4" content="Group 3"/>
-                        <List link inverted>
+                        <Header as="h4" content="Group 3"/>
+                        <List link>
                             <List.Item as="a">Link One</List.Item>
                             <List.Item as="a">Link Two</List.Item>
                             <List.Item as="a">Link Three</List.Item>
@@ -39,7 +39,7 @@ const Footer = () => {
                         </List>
                     </Grid.Column>
                     <Grid.Column width={7}>
-                        <Header inverted as="h4" content="Footer Header"/>
+                        <Header as="h4" content="Footer Header"/>
                         <p>
                             Extra space for a call to action inside the footer that could help
                             re-engage users.
@@ -47,9 +47,9 @@ const Footer = () => {
                     </Grid.Column>
                 </Grid>
 
-                <Divider inverted section/>
+                <Divider section/>
                 <Image centered size="mini" src="/logo.png"/>
-                <List horizontal inverted divided link size="small">
+                <List horizontal divided link size="small">
                     <List.Item as="a" href="#">
                         Site Map
                     </List.Item>

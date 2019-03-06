@@ -15,9 +15,6 @@ const NavBarMenuComponent = props => {
                     <Menu.Item>
                         <Icon loading name="life ring"/>
                     </Menu.Item>
-                    <Menu.Item onClick={props.handleItemClick} name="logo">
-                        <Header>WISH MISH</Header>
-                    </Menu.Item>
                     <Menu.Item
                         as={Link}
                         onClick={props.handleItemClick}
@@ -26,7 +23,7 @@ const NavBarMenuComponent = props => {
                         to="/app"
                         active={props.activeItem === "app"}
                     >
-                        Home
+                        <Header>WISH MISH</Header>
                     </Menu.Item>
 
                     <Menu.Menu position="right">

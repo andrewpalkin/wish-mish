@@ -8,7 +8,11 @@ const ButtonAsClass = toClass(Button);
 const trigger = userDetails => (
     <span>
     {(
-        <Label size="large" color="pink" circular style={{marginRight: "4px"}}>
+        <Label size="large" circular style={{
+            marginRight: "4px",
+            backgroundColor: "#F89235",
+            color: "white"
+        }}>
             {userDetails.initials}
         </Label>
     )}

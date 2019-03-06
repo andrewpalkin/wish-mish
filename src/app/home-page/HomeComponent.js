@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import WishLightComponent from "./WishLightComponent";
 import CompleteWishComponent from "./CompleteWishComponent";
 import {Link} from "react-router-dom";
-import {Button, Grid, Header, Menu, Segment, Image} from "semantic-ui-react";
+import {Button, Grid, Header, Image, Menu, Segment} from "semantic-ui-react";
 import dateDiff from "../common/utils/dates/dateDiff";
 
 export default class HomePage extends Component {
@@ -17,7 +17,8 @@ export default class HomePage extends Component {
         return (
             <>
                 <Segment basic>
-                    <Image src='http://media.virbcdn.com/files/b1/6d1d02deff9a0674-worldmap_noborder_nopoles.png' fluid/>
+                    <Image src='http://media.virbcdn.com/files/b1/6d1d02deff9a0674-worldmap_noborder_nopoles.png'
+                           fluid/>
                 </Segment>
                 <Segment basic>
                     <Header as="h1" textAlign="center">
@@ -132,14 +133,14 @@ export default class HomePage extends Component {
                     </Menu>
                     <Segment basic>
                         <Segment>
-                            <Grid columns={2}>
+                            <Grid columns={3}>
                                 <Grid.Column width={1}>
                                     <Header as="h1" style={{
                                         paddingTop: "15px",
                                         paddingLeft: "15px"
                                     }}>1</Header>
                                 </Grid.Column>
-                                <Grid.Column width={15}>
+                                <Grid.Column width={9}>
                                     <Grid.Row style={{
                                         paddingTop: "5px",
                                         paddingBottom: "5px",
@@ -161,6 +162,16 @@ export default class HomePage extends Component {
                                         </Header>
                                     </Grid.Row>
                                 </Grid.Column>
+                                <Grid.Column width={6} style={{
+                                    paddingTop: "0px",
+                                    paddingBottom: "0px",
+                                    paddingRight: "0px",
+                                    paddingLeft: "0px"
+                                }}>
+                                    <Image
+                                        src="https://image.shutterstock.com/z/stock-photo-picture-showing-pretty-woman-shopping-online-with-credit-card-571340965.jpg"
+                                        fluid/>
+                                </Grid.Column>
                             </Grid>
                         </Segment>
                         <Segment>
@@ -171,7 +182,7 @@ export default class HomePage extends Component {
                                         paddingLeft: "15px"
                                     }}>2</Header>
                                 </Grid.Column>
-                                <Grid.Column width={15}>
+                                <Grid.Column width={9}>
                                     <Grid.Row style={{
                                         paddingTop: "5px",
                                         paddingBottom: "5px",
@@ -193,6 +204,17 @@ export default class HomePage extends Component {
                                         </Header>
                                     </Grid.Row>
                                 </Grid.Column>
+                                <Grid.Column width={6} style={{
+                                    paddingTop: "0px",
+                                    paddingBottom: "0px",
+                                    paddingRight: "0px",
+                                    paddingLeft: "0px"
+                                }}>
+                                    <Image
+                                        src="https://as1.ftcdn.net/jpg/01/19/37/36/500_F_119373620_auKcWV6YJX5d0mUrulfnOOR2seArdwF3.jpg"
+                                        fluid/>
+                                </Grid.Column>
+
                             </Grid>
                         </Segment>
                         <Segment>
@@ -203,7 +225,7 @@ export default class HomePage extends Component {
                                         paddingLeft: "15px"
                                     }}>3</Header>
                                 </Grid.Column>
-                                <Grid.Column width={15}>
+                                <Grid.Column width={9}>
                                     <Grid.Row style={{
                                         paddingTop: "5px",
                                         paddingBottom: "5px",
@@ -226,6 +248,17 @@ export default class HomePage extends Component {
                                         </Header>
                                     </Grid.Row>
                                 </Grid.Column>
+                                <Grid.Column width={6} style={{
+                                    paddingTop: "0px",
+                                    paddingBottom: "0px",
+                                    paddingRight: "0px",
+                                    paddingLeft: "0px"
+                                }}>
+                                    <Image
+                                        src="https://as2.ftcdn.net/jpg/01/78/96/67/500_F_178966731_nOaIBUb3YMEhQpjEq2vvUxAP4z3kHMku.jpg"
+                                        fluid/>
+                                </Grid.Column>
+
                             </Grid>
                         </Segment>
                         <Segment>
@@ -236,7 +269,7 @@ export default class HomePage extends Component {
                                         paddingLeft: "15px"
                                     }}>4</Header>
                                 </Grid.Column>
-                                <Grid.Column width={15}>
+                                <Grid.Column width={9}>
                                     <Grid.Row style={{
                                         paddingTop: "5px",
                                         paddingBottom: "5px",
@@ -256,6 +289,16 @@ export default class HomePage extends Component {
                                             your item, make sure to give the rating to your traveler.
                                         </Header>
                                     </Grid.Row>
+                                </Grid.Column>
+                                <Grid.Column width={6} style={{
+                                    paddingTop: "0px",
+                                    paddingBottom: "0px",
+                                    paddingRight: "0px",
+                                    paddingLeft: "0px"
+                                }}>
+                                    <Image
+                                        src="https://image.shutterstock.com/z/stock-photo-asian-woman-receiving-a-package-at-home-from-a-delivery-guy-613872155.jpg"
+                                        fluid/>
                                 </Grid.Column>
                             </Grid>
                         </Segment>
