@@ -88,6 +88,20 @@ const submitWishOfferOperation = wishId => {
                 wishId,
                 createdDate
             })
+            .then(() => {
+                firestore
+                    .collection("offers")
+                    .where("wishId", "==", wishId)
+                    .get()
+                    .then((context) => {
+                        firestore
+                            .collection("wishes")
+                            .doc(wishId)
+                            .update({
+                                numberOfOffers: context.size
+                            });
+                    })
+            })
             .then(submitWishResponse => {
                 dispatch(submitWishOfferSuccess(submitWishResponse));
             })

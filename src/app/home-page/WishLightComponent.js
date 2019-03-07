@@ -195,7 +195,10 @@ const WishLightComponent = props => {
                     color: "rgba(0, 0, 0, 0.4)"
                   }}
                 >
-                  2 offers
+                    {props.numberOfOffers && props.numberOfOffers > 0 ?
+                        props.numberOfOffers + " offers":
+                        "No offers"
+                    }
                 </label>
               </Grid.Column>
             </Grid>

@@ -1,4 +1,3 @@
-import _ from "lodash";
 import React, {Component} from "react";
 import {Modal} from "semantic-ui-react";
 import {withRouter} from 'react-router-dom'

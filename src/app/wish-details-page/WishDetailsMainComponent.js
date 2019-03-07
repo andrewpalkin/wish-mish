@@ -42,11 +42,11 @@ class WishDetailsMainComponent extends Component {
                             <Grid.Row>
                                 <Grid.Column width={8} floated="right">
                                     <div className="ui card fluid" style={{height: "100%"}}>
-                                        <div class="image" fluid>
+                                        <div className="image" fluid>
                                             <Image src="https://react.semantic-ui.com/images/wireframe/image.png"/>
                                         </div>
-                                        <div class="content centered">
-                                            <a centered class="header">
+                                        <div className="content centered">
+                                            <a centered className="header">
                                                 {wishDetails.productName}
                                             </a>
                                         </div>

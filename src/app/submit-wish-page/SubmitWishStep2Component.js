@@ -94,8 +94,9 @@ const SubmitWishStep2Component = props => {
                             </Grid.Column>
                             <Grid.Column floated="right" textAlign="right">
                                 <Header size="large">
-                                    ${formDataStep1.itemPrice * formDataStep1.quantity}
-                                    .00
+                                    {(formDataStep1.itemPrice * formDataStep1.quantity)
+                                        .toFixed(2)
+                                        .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
                                 </Header>
                                 {formDataStep2.reward ? (
                                     <Header size="medium">${formDataStep2.reward}</Header>
