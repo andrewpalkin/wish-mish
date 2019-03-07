@@ -1,6 +1,6 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Button, Divider, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
+import {Button, Divider, Form, Grid, Header, Segment} from "semantic-ui-react";
 import {required} from "../common/utils/validations/FieldLevelValidationForm";
 
 import ItemQuantityComponent from "../common/form-component/ItemQuantityComponent";
@@ -9,19 +9,11 @@ import renderCheckbox from "../common/components/form/RenderCheckbox";
 import renderSelect from "../common/components/form/RenderSelect";
 import renderTextArea from "../common/components/form/RenderTextArea";
 
-const normalizeDoubleNumber = (value, previousValue) => {
-    if (!value) {
-        return value;
-    }
-
-    return value.match(/^(?!(0))\d{1,4}\.(\d{1,2})?$/g) ||
-    value.match(/^(?!(0))^\d{1,4}\.?$/g)
-        ? value
-        : previousValue;
-};
+import ShoppingCardComponent from "./ShoppingCardComponent"
+import normalizeDoubleNumber from "../common/utils/normalizeDoubleNumber"
 
 const SubmitWishStep1Component = props => {
-    const {handleSubmit, formDataStep1 = {}} = props;
+    const {handleSubmit} = props;
 
     return (
         <Grid stackable>
@@ -132,25 +124,8 @@ const SubmitWishStep1Component = props => {
             </Grid.Column>
             <Grid.Column width={5}>
                 <Segment>
-                    <label as="h3">
-                        {formDataStep1 ? formDataStep1.productName : ""}
-                    </label>
-                    <Divider clearing/>
-                    {formDataStep1 && formDataStep1.itemPrice ? (
-                        <Grid style={{marginBottom: "5px"}} columns="equal">
-                            <Grid.Column floated="left">
-                                <Header size="medium">Item Price</Header>
-                            </Grid.Column>
-                            <Grid.Column floated="right" textAlign="right">
-                                <Header size="medium">
-                                    <Icon name="dollar"/>
-                                    {(formDataStep1.itemPrice * formDataStep1.quantity)
-                                        .toFixed(2)
-                                        .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                                </Header>
-                            </Grid.Column>
-                        </Grid>
-                    ) : null}
+                    <ShoppingCardComponent {...props}/>
+
                     <Button primary fluid onClick={props.handleSubmitFormStep1}>
                         Next
                     </Button>

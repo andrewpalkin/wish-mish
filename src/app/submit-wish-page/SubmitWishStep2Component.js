@@ -1,15 +1,19 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Button, Divider, Form, Grid, Header, Segment} from "semantic-ui-react";
+import {Button, Form, Grid, Header, Segment} from "semantic-ui-react";
 
 import renderDatePicker from "../common/components/form/RenderDatePicker";
 import renderSelect from "../common/components/form/RenderSelect";
+import renderInput from "../common/components/form/InputComponent";
 import renderTextArea from "../common/components/form/RenderTextArea";
+import ShoppingCardComponent from "./ShoppingCardComponent";
+
+import normalizeDoubleNumber from "../common/utils/normalizeDoubleNumber"
 
 const required = value => (value ? undefined : "Required");
 
 const SubmitWishStep2Component = props => {
-    const {handleSubmit, formDataStep1 = {}, formDataStep2 = {}} = props;
+    const {handleSubmit} = props;
     return (
         <Grid stackable>
             <Grid.Column width={11}>
@@ -52,58 +56,21 @@ const SubmitWishStep2Component = props => {
                             required
                         />
                         <Field
-                            component={Form.Input}
+                            component={renderInput}
                             label="Reward for this Job"
                             name="reward"
-                            placeholder="Product URL from online shops like Amazon, eBay etc..."
+                            icon="dollar"
+                            iconPosition="left"
+                            placeholder="Enter the reward amount"
+                            normalize={normalizeDoubleNumber}
                         />
                     </Form>
                 </Segment>
             </Grid.Column>
             <Grid.Column width={5}>
                 <Segment>
-                    <label as="h1">
-                        {formDataStep1 ? formDataStep1.productName : ""}
-                    </label>
-                    {formDataStep2.deliveryTo ||
-                    formDataStep2.deliveryFrom ||
-                    formDataStep2.deliveryBeforeDate ? (
-                        <Divider clearing/>
-                    ) : null}
-                    {formDataStep2.deliveryTo ? (
-                        <Header size="medium">Delivey to {formDataStep2.deliveryTo}</Header>
-                    ) : null}
-                    {formDataStep2.deliveryFrom ? (
-                        <Header size="medium">
-                            Delivey from {formDataStep2.deliveryFrom}
-                        </Header>
-                    ) : null}
-                    {formDataStep2.deliveryBeforeDate ? (
-                        <Header size="medium">
-                            Delivery before {formDataStep2.deliveryBeforeDate}
-                        </Header>
-                    ) : null}
-                    <Divider clearing/>
-                    {formDataStep1 && formDataStep1.itemPrice ? (
-                        <Grid style={{marginBottom: "5px"}} columns="equal">
-                            <Grid.Column floated="left">
-                                <Header size="medium">Item Price</Header>
-                                {formDataStep2.reward ? (
-                                    <Header size="medium">Reward</Header>
-                                ) : null}
-                            </Grid.Column>
-                            <Grid.Column floated="right" textAlign="right">
-                                <Header size="large">
-                                    {(formDataStep1.itemPrice * formDataStep1.quantity)
-                                        .toFixed(2)
-                                        .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                                </Header>
-                                {formDataStep2.reward ? (
-                                    <Header size="medium">${formDataStep2.reward}</Header>
-                                ) : null}
-                            </Grid.Column>
-                        </Grid>
-                    ) : null}
+                    <ShoppingCardComponent {...props}/>
+
                     <Button primary fluid onClick={props.handleSubmitFormStep2}>
                         Next
                     </Button>
