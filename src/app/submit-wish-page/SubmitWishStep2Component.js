@@ -8,9 +8,9 @@ import renderInput from "../common/components/form/InputComponent";
 import renderTextArea from "../common/components/form/RenderTextArea";
 import ShoppingCardComponent from "./ShoppingCardComponent";
 
-import normalizeDoubleNumber from "../common/utils/normalizeDoubleNumber"
+import {required} from "../common/utils/validations/FieldLevelValidationForm";
 
-const required = value => (value ? undefined : "Required");
+import normalizeDoubleNumber from "../common/utils/normalizeDoubleNumber"
 
 const SubmitWishStep2Component = props => {
     const {handleSubmit} = props;
@@ -33,13 +33,13 @@ const SubmitWishStep2Component = props => {
                             ]}
                             placeholder="Office location"
                             validate={required}
-                            required
                         />
                         <Field
-                            component={Form.Input}
+                            component={renderInput}
                             label="Delivery from"
                             name="deliveryFrom"
                             placeholder="Product URL from online shops like Amazon, eBay etc..."
+                            maxLength={30}
                         />
                         <Field
                             component={renderDatePicker}
@@ -53,7 +53,7 @@ const SubmitWishStep2Component = props => {
                             name="additionalProductInformation"
                             placeholder="Provide more details that you think are important"
                             validate={required}
-                            required
+                            maxLength={250}
                         />
                         <Field
                             component={renderInput}

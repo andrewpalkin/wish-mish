@@ -11,6 +11,8 @@ import renderTextArea from "../common/components/form/RenderTextArea";
 
 import ShoppingCardComponent from "./ShoppingCardComponent"
 import normalizeDoubleNumber from "../common/utils/normalizeDoubleNumber"
+import normalizeTextInput from "../common/utils/normalizeTextInput";
+import normalizeWeightDoubleNumber from "../common/utils/normalizeWeightDoubleNumber"
 
 const SubmitWishStep1Component = props => {
     const {handleSubmit} = props;
@@ -29,6 +31,8 @@ const SubmitWishStep1Component = props => {
                             name="productName"
                             placeholder="Product name that you wish..."
                             validate={required}
+                            normalize={normalizeTextInput}
+                            maxLength={30}
                         />
                         <Field
                             component={renderTextArea}
@@ -36,6 +40,7 @@ const SubmitWishStep1Component = props => {
                             name="productInformation"
                             placeholder="Tell us more about you product that you wish.."
                             validate={required}
+                            maxLength={250}
                         />
                         <Field
                             component={Form.Input}
@@ -86,6 +91,7 @@ const SubmitWishStep1Component = props => {
                                 iconPosition="left"
                                 placeholder="Enter weight... (kg)"
                                 validate={required}
+                                normalize={normalizeWeightDoubleNumber}
                             />
                         </Form.Group>
                         <Form.Group>
