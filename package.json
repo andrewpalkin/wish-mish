@@ -6,13 +6,13 @@
     "classnames": "2.2.6",
     "firebase": "latest",
     "lodash": "4.17.11",
-    "react": "16.8.1",
-    "react-dom": "16.8.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "react-redux": "5.1.1",
-    "react-redux-firebase": "2.2.4",
+    "react-redux-firebase": "2.2.6",
     "react-router-dom": "4.3.1",
     "react-router-redux": "4.0.8",
-    "react-scripts": "2.1.2",
+    "react-scripts": "2.1.8",
     "recompose": "0.30.0",
     "redux": "4.0.1",
     "redux-firestore": "latest",
@@ -20,8 +20,8 @@
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
     "reduxsauce": "1.0.1",
-    "semantic-ui-calendar-react": "0.13.0",
-    "semantic-ui-react": "0.85.0"
+    "semantic-ui-calendar-react": "0.15.0",
+    "semantic-ui-react": "0.87.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,5 +32,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
